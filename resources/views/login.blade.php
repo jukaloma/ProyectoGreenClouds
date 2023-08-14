@@ -60,7 +60,7 @@
 	<div class="modal" id="modal_authdir">
 		<div class="modal-content signup-modal-content" onclick="event.stopPropagation();">
 			<div class="form-close-container">
-				<button class="close-modal" onclick="closeModal('modal_authdir')"><i class="fa-solid fa-xmark"></i></button>
+				<button class="close-modal" onclick="closeModal('modal_authdir'); openModal('modal_signup')"><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<form action="{{ route('dir_signup') }}" method="POST">
 				@csrf
