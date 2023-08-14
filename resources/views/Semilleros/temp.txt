@@ -1,0 +1,11 @@
+
+		@foreach($semilleros as $semillero)
+			@php
+				$sem += 1
+			@endphp	
+			@if($sem == $parametro)
+				<h4>{{ $parametro}} </h4>
+			@endif
+			<h4>as{{ $sem }}da</h4>
+			<h4>{{ $parametro }}</h4>
+		@endforeach
