@@ -9,10 +9,6 @@ use App\Models\Semillero;
 
 class DirectorController extends Controller
 {
-    public function signup(){
-        return view('Signup.signup_director');
-    }
-
     public function authPass(Request $r)
     {
         $contrasenaIngresada = $r->input('txtPassDir');

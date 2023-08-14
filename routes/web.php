@@ -29,9 +29,9 @@ Route::get('/semilleros', function () {
 
 
 Route::get('signup_semillerista', [Semilleristas::class, 'signup'])->name('signup_semillerista');
-Route::get('coord_signup', [Coordinadores::class, 'signup'])->name('coord_signup');
-Route::get('dir_signup', [DirectorController::class, 'signup'])->name('dir_signup');
 Route::get('principal', [DirectorController::class, 'mainDir'])->name('main_dir');
+Route::post('dir_signup', [DirectorController::class, 'authPass'])->name('dir_signup');
+Route::post('coord_signup', [Coordinadores::class, 'authPass'])->name('coord_signup');
 
 Route::post('reg_semillerista', [Semilleristas::class, 'registrar'])->name('reg_semillerista');
 Route::post('reg_semillero', [Semilleros::class, 'registrar'])->name('reg_semillero');
