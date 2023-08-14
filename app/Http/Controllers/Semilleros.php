@@ -34,13 +34,25 @@ class Semilleros extends Controller
     
     public function actualizar(Request $r, $id){
         $semillero = Semillero::findOrFail($id);
-        $logo = $r->file('logo');
-        $pres = $r->file('presentacion');
-        $res = $r->file('resolucion');
-        $logoPath = $logo->store('Semilleros/logos','public') ;
-        $presPath = $pres->store('Semilleros/presentaciones/','public') ;
-        $resPath = $res->store('Semilleros/resoluciones/','public') ;
-        $semillero->nomSemillero = $r->input('nombre');
+        if ($r->hasFile('logo')) {
+            Storage::delete($semillero->logoSemillero);    
+            $logoPath = $r->file('logo')->store('Semilleros/logos', 'public');
+        }else {
+            $logoPath = $semillero->logoSemillero;
+        }
+        if ($r->hasFile('presentacion')) {
+            Storage::delete($semillero->presSemillero);    
+            $presPath = $r->file('presentacion')->store('Semilleros/presentaciones', 'public');
+        }else {
+            $presPath = $semillero->presSemillero;
+        }
+        if ($r->hasFile('resolucion')) {
+            Storage::delete($semillero->resCreaSemillero);
+            $resPath = $r->file('resolucion')->store('Semilleros/resoluciones', 'public');
+        }else {
+            $resPath = $semillero->resCreaSemillero;
+        }
+        $semillero->nomSemillero = $id;
         $semillero->emailSemillero = $r->input('correo');
         $semillero->logoSemillero = $logoPath;
         $semillero->fecCreaSemillero = $r->input('fecha');

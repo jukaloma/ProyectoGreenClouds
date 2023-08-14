@@ -6,13 +6,16 @@
 
 @section('content')
 @include('Componentes.header')
-
+@php
+	if(empty($id)){
+		$id='test';
+	}
+@endphp
 <section class="semilleros">
 	<div class="l-navbar" id="l-nav-bar">
 		<nav class="nav">
 			<div class="nav-options"> 
-				<div class="nav_list"> 
-					
+				<div class="nav_list">					
 					<a href="#content-dashboard" class="nav_link active"> 
 						<i class="fa-solid fa-table"></i>
 					</a>
@@ -30,7 +33,7 @@
 					</a> 
 				</div>
 			</div> 
-			<a href="principal" class="nav_link log-out"> 
+			<a href="{{ route('main_dir') }}" class="log-out"> 
 				<i class="fa-solid fa-arrow-right-from-bracket"></i> 
 			</a>
 		</nav>

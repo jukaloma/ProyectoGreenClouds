@@ -23,10 +23,8 @@
 
 					<div class="mb-3">
 						<label for="logo" class="form-label">Logo del Semillero:</label>
-						<!-- <div class="img-container"> -->
-							<img class="act-logo" id="logo-preview" src="" alt="Logo" width="100" height="100">
-						<!-- </div> -->
-						<input type="file" class="form-control" id="logo" name="logo" accept="image/*" required>
+						<img class="act-logo" id="logo-preview" src="" alt="Logo" width="100" height="100">
+						<input type="file" class="form-control" id="logo" name="logo" accept="image/*">
 					</div>
 
 					<div class="mb-3">
@@ -36,12 +34,12 @@
 
 					<div class="mb-3">
 						<label for="presentacion" class="form-label">Presentación (PDF):</label>
-						<input type="file" class="form-control" id="presentacion" name="presentacion" accept=".pdf" required>
+						<input type="file" class="form-control" id="presentacion" name="presentacion" accept=".pdf">
 					</div>
 
 					<div class="mb-3">
 						<label for="resolucion" class="form-label">Resolución de Creación (PDF):</label>
-						<input type="file" class="form-control" id="resolucion" name="resolucion" accept=".pdf" required>
+						<input type="file" class="form-control" id="resolucion" name="resolucion" accept=".pdf">
 					</div>
 
 					<div class="mb-3">

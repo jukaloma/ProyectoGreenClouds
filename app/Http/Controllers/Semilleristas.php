@@ -8,6 +8,10 @@ use App\Models\Semillerista;
 
 class Semilleristas extends Controller
 {
+    public function signup(){
+        return view('Signup.signup_semillerista');
+    }
+
     public function registrar(Request $r){
         $pic = $r->file('filePic');
         $rep = $r->file('fileRep');

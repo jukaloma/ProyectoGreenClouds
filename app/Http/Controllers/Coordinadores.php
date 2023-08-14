@@ -8,6 +8,10 @@ use App\Models\Coordinador;
 
 class Coordinadores extends Controller
 {
+    public function signup(){
+        return view('Signup.signup_coordinador');
+    }
+
     public function authPass(Request $r)
     {
         $contrasenaIngresada = $r->input('txtPassDir');
