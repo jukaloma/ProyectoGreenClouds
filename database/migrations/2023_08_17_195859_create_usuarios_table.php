@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('director', function (Blueprint $table) {
-            $table->string('nomDir');
-            $table->string('emailDir');
-            $table->string('telDir');
-            $table->string('picDir');
-            $table->string('usuDir');
-            $table->string('passDir');
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->integer('idUsuario');
+            $table->string('nomUsuario');
+            $table->string('passUsuario');
             $table->timestamps();
-            $table->primary('nomDir');
+            $table->primary('idUsuario');
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('director');
+        Schema::dropIfExists('usuarios');
     }
 };

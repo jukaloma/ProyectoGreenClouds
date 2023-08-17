@@ -25,16 +25,14 @@ return new class extends Migration
             $table->string('progSemillerista');
             $table->date('fecVincSemillerista');
             $table->char('estSemillerista');
-            $table->string('usuSemillerista');
-            $table->string('passSemillerista');
-            $table->string('semillero');
+            $table->integer('usuario');
+            $table->integer('semillero');
             $table->integer('proyecto');
-            $table->integer('evento');
             $table->timestamps();
             $table->primary('codSemillerista');
-            $table->foreign('semillero')->references('nomSemillero')->on('semilleros');
+            $table->foreign('semillero')->references('codSemillero')->on('semilleros');
             $table->foreign('proyecto')->references('codProy')->on('proyectos');
-            $table->foreign('evento')->references('codEvento')->on('eventos');
+            $table->foreign('usuario')->references('idUsuario')->on('usuarios');
         });
     }
 

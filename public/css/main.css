@@ -576,7 +576,7 @@ iframe {
 }
 
 .signup-modal-content{
-  width: 30%;
+  width: max-content;
   height: min-content;
 }
 

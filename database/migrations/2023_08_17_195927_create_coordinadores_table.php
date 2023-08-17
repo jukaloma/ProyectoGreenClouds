@@ -24,12 +24,12 @@ return new class extends Migration
             $table->string('areaCoord');
             $table->date('fecVincCoord');
             $table->string('acuerNomCoord');
-            $table->string('usuCoord');
-            $table->string('passCoord');
-            $table->string('semillero');
+            $table->integer('usuario');
+            $table->integer('semillero');
             $table->timestamps();
             $table->primary('idCoord');
-            $table->foreign('semillero')->references('nomSemillero')->on('semilleros');
+            $table->foreign('semillero')->references('codSemillero')->on('semilleros');
+            $table->foreign('usuario')->references('idUsuario')->on('usuarios');
         });
     }
 
