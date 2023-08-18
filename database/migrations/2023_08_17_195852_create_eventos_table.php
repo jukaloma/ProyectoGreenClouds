@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('eventos', function (Blueprint $table) {
-            $table->integer('codEvento');
+            $table->increments('codEvento');
             $table->string('nomEvento');
             $table->text('descEvento');
             $table->date('fecIniEvento');
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('clasEvento',30);
             $table->text('obsEvento',30);
             $table->timestamps();
-            $table->primary('codEvento');
         });
     }
 

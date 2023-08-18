@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('director', function (Blueprint $table) {
-            $table->integer('idDir');
+            $table->increments('idDir');
             $table->string('nomDir');
             $table->string('emailDir');
             $table->string('telDir');
             $table->string('picDir');
-            $table->integer('usuario');
+            $table->unsignedInteger('usuario');
             $table->timestamps();
-            $table->primary('idDir');
             $table->foreign('usuario')->references('idUsuario')->on('usuarios');
         });
     }

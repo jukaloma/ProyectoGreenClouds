@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('coordinadores', function (Blueprint $table) {
-            $table->integer('idCoord');
+            $table->increments('idCoord');
             $table->string('nomCoord');
             $table->string('dirCoord');
             $table->string('telCoord');
@@ -24,10 +24,9 @@ return new class extends Migration
             $table->string('areaCoord');
             $table->date('fecVincCoord');
             $table->string('acuerNomCoord');
-            $table->integer('usuario');
-            $table->integer('semillero');
+            $table->unsignedInteger('usuario');
+            $table->unsignedInteger('semillero')->nullable();
             $table->timestamps();
-            $table->primary('idCoord');
             $table->foreign('semillero')->references('codSemillero')->on('semilleros');
             $table->foreign('usuario')->references('idUsuario')->on('usuarios');
         });

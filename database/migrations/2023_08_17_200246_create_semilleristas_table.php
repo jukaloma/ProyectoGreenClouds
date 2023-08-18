@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semilleristas', function (Blueprint $table) {
-            $table->integer('codSemillerista');
+            $table->increments('codSemillerista');
             $table->string('nomSemillerista');
             $table->string('dirSemillerista');
             $table->string('telSemillerista');
@@ -25,11 +25,10 @@ return new class extends Migration
             $table->string('progSemillerista');
             $table->date('fecVincSemillerista');
             $table->char('estSemillerista');
-            $table->integer('usuario');
-            $table->integer('semillero');
-            $table->integer('proyecto');
+            $table->unsignedInteger('usuario')->nullable();
+            $table->unsignedInteger('semillero');
+            $table->unsignedInteger('proyecto')->nullable();
             $table->timestamps();
-            $table->primary('codSemillerista');
             $table->foreign('semillero')->references('codSemillero')->on('semilleros');
             $table->foreign('proyecto')->references('codProy')->on('proyectos');
             $table->foreign('usuario')->references('idUsuario')->on('usuarios');

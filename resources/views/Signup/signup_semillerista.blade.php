@@ -34,7 +34,7 @@
                             </div>
                             
                             <div class="wrap-input100">
-                                <input class="input100" type="text" name="txtEmail" placeholder="Correo" required>
+                                <input class="input100" type="email" name="txtEmail" placeholder="Correo" required>
                                 <span class="focus-input100"></span>
                             </div>
                             
@@ -105,9 +105,9 @@
                             <div class="wrap-input100">
                                 <select class="input100" aria-label="Programa" name="selProg">
                                     <option value="" selected disabled>Elija su programa</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    <option value="Sistemas">Ing Sistemas</option>
+                                    <option value="Electrónica">Ing Electrónica</option>
+                                    <option value="Civil">Ing Civil</option>
                                 </select>
                                 <span class="focus-input100"></span>
                             </div>
@@ -165,9 +165,9 @@
                             <div class="wrap-input100">
                                 <select class="input100" aria-label="Semillero" name="selSem">
                                     <option value="" selected disabled>Elija su semillero</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    @foreach ($semilleros as $semillero)
+                                        <option value="{{ $semillero->codSemillero }}">{{ $semillero->nomSemillero }}</option>
+                                    @endforeach
                                 </select>
                                 <span class="focus-input100"></span>
                             </div>

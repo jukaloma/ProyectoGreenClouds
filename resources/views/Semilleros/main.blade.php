@@ -38,11 +38,14 @@
 			</a>
 		</nav>
 	</div>
+
+
+
     <div class="components">
         <div class="content">
 			<div id="content-dashboard" class="content-item">
 				<div class="content-item-title">
-					<h4>{{ $id }}</h4>
+					<h4>{{ $semillero->nomSemillero }}</h4>
 				</div>
 				<div class="row">
 					<div class="col-md-6 mb-3 shadow">
@@ -92,22 +95,6 @@
 									<img src="{{ asset('images/user-null.png')}}" alt="">
 									<p>Aún no hay semilleristas vinculados a este semillero. </p> <br>
 								</div>
-									<!-- <ul>
-										<li>Proyecto 1</li>
-									</ul> -->
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 mb-3">
-						<div class="card">
-							<div class="card-header">
-								Reportes
-							</div>
-							<div class="card-body">
-								<a href="" class="btn btn-primary">Opción 1</a>
-								<a href="" class="btn btn-primary">Opción 2</a>
-								<a href="" class="btn btn-primary">Opción 3</a>
 							</div>
 						</div>
 					</div>
@@ -116,7 +103,7 @@
 			
 			<div id="content-proyectos" class="content-item hidden">
 				<div class="content-item-title">
-					<h4>{{ $id }}</h4>
+					<h4>{{ $semillero->nomSemillero }}</h4>
 				</div>
 				<div class="card card-item mx-2 mb-3">
 					<a href="tecnopazifico" class="img-container">
@@ -138,12 +125,12 @@
 			</div>
 			<div id="content-eventos" class="content-item hidden">
 				<div class="content-item-title">
-					<h4>{{ $id }}</h4>
+					<h4>{{ $semillero->nomSemillero }}</h4>
 				</div>
 			</div>
 			<div id="content-semilleristas" class="content-item hidden">
 				<div class="content-item-title">
-					<h4>{{ $id }}</h4>
+					<h4>{{ $semillero->nomSemillero }}</h4>
 				</div>
 			</div>
         </div>

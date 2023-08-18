@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Semillerista;
+use App\Models\Usuario;
 
 class Semilleristas extends Controller
 {
@@ -31,9 +32,7 @@ class Semilleristas extends Controller
         $semillerista->progSemillerista = $r->input('selProg');
         $semillerista->fecVincSemillerista = $r->input('txtFecVinc');
         $semillerista->estSemillerista = $r->input('rdEst');
-        $semillerista->usuSemillerista = $r->input('txtUsu');
-        $semillerista->passSemillerista = $r->input('txtPass');
-        // $semillerista->semillero = $r->input('selSem');
+        $semillerista->semillero = $r->input('selSem');
         $semillerista->save();
         return redirect()->to('/')->with(['success' => 'Cuenta creada exitosamente'])->withInput();
     }

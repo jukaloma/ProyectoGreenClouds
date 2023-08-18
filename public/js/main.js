@@ -168,7 +168,7 @@ if (passwordField && confirmPasswordField) {
 document.querySelectorAll('.op-link i').forEach(function(icon) {
     icon.addEventListener('click', function() {
         var parametro = JSON.parse(this.getAttribute('data-parametro'));
-        document.querySelector('#modal_act_semillero form#signup_form').action = window.location.origin + '/act_semillero/'+ parametro.nomSemillero;
+        document.querySelector('#modal_act_semillero form#signup_form').action = window.location.origin + '/act_semillero/'+ parametro.codSemillero;
         document.querySelector('#modal_act_semillero input#nombre').value = parametro.nomSemillero;
         document.querySelector('#modal_act_semillero input#correo').value = parametro.emailSemillero;
         document.querySelector('#modal_act_semillero #logo-preview').src = "storage/" + parametro.logoSemillero;
@@ -183,8 +183,6 @@ document.querySelectorAll('.op-link i').forEach(function(icon) {
     });
 });
 
-// document.querySelector('#modal_act_semillero input#resolucion').value = parametro.resCreaSemillero;
-// document.querySelector('#modal_act_semillero input#presentacion').value = parametro.presSemillero;
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 // abrir y cerrar modal//////////////////////////////////////////////////////

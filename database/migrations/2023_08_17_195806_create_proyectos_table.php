@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('proyectos', function (Blueprint $table) {
-            $table->integer('codProy');
+            $table->increments('codProy');
             $table->string('titProy');
             $table->text('tipProy');
             $table->string('estProy');
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('propProy');
             $table->char('finProy');
             $table->timestamps();
-            $table->primary('codProy');
         });
     }
 

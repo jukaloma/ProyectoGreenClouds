@@ -36,6 +36,7 @@ Route::post('coord_signup', [Coordinadores::class, 'authPass'])->name('coord_sig
 Route::post('reg_semillerista', [Semilleristas::class, 'registrar'])->name('reg_semillerista');
 Route::post('reg_semillero', [Semilleros::class, 'registrar'])->name('reg_semillero');
 Route::post('act_semillero/{id}', [Semilleros::class, 'actualizar'])->name('act_semillero');
+Route::get('del_semillero/{id}', [Semilleros::class, 'eliminar'])->name('del_semillero');
 Route::get('gest_semillero/{id}', [Semilleros::class, 'gestionar'])->name('gest_semillero');
 
 Route::post('reg_coordinador', [Coordinadores::class, 'registrar'])->name('reg_coordinador');

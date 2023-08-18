@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semilleros', function (Blueprint $table) {
-            $table->integer('codSemillero');
+            $table->increments('codSemillero');
             $table->string('nomSemillero');
             $table->string('emailSemillero');
             $table->string('logoSemillero');
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->date('fecCreaSemillero');
             $table->string('resCreaSemillero');
             $table->timestamps();
-            $table->primary('codSemillero');
         });
     }
 

@@ -12,15 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('participaciones', function (Blueprint $table) {
-            $table->integer('codPart');
+            $table->increments('codPart');
             $table->string('modPart');
             $table->string('califPart');
             $table->string('certPart');
             $table->string('evidencias');
-            $table->integer('proyecto');
-            $table->integer('evento');
+            $table->unsignedInteger('proyecto');
+            $table->unsignedInteger('evento');
             $table->timestamps();
-            $table->primary('codPart');
             $table->foreign('proyecto')->references('codProy')->on('proyectos');
             $table->foreign('evento')->references('codEvento')->on('eventos');
         });

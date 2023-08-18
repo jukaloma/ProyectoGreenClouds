@@ -50,18 +50,25 @@
 						</div>
 
 						<div class="mb-3">
-							<label for="linea_investigacion" class="form-label">Línea de Investigación:</label>
-							<input type="text" class="form-control" id="linea_investigacion" name="linea_investigacion" required>
+							<label for="selLinea" class="form-label">Línea de Investigación:</label>
+							<select class="js-example-basic-single js-states form-control" id="selCoord">
+								<option selected>Seleccionar Línea</option>
+								<option value="Ingeniería en Computación">Ingeniería en Computación</option>
+								<option value="Ciencia en Computación">Ciencia en Computación</option>
+								<option value="Sistemas de Información">Sistemas de Información</option>
+								<option value="Tecnología de Información">Tecnología de Información</option>
+								<option value="Ingeniería de Software">Ingeniería de Software</option>
+							</select>
 						</div>
 
 						<div class="mb-3">
-							<label for="id_label_single" class="form-label">Asignar coordinador</label>
-								<select class="js-example-basic-single js-states form-control" id="selCoord">
-									<option selected>Seleccionar</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</select>
+							<label for="selCoord" class="form-label">Asignar coordinador</label>
+							<select class="js-example-basic-single js-states form-control" id="selCoord">
+								<option selected>Seleccionar</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
 						</div>
 					</div>
                     <div class="form_section1" id="form_section1">
@@ -96,10 +103,6 @@
 		</div>
 	</div>
 
-	@php 
-		$parametro=0;
-		$sem=0
-	@endphp
 	@include('Componentes.modal_act_semillero')
 	
 	<div class="container">
@@ -114,77 +117,11 @@
 								<h5 class="mb-3">¡Bienvenido, Ing. Luis Obeymar!</h5>
 								<h6>¿Qué semillero desea gestionar?</h6>
 							</div>
-							
-							<div class="dir options justify-content-center">
-								<div class="card card-item mx-2 mb-3">
-									<a href="semilleros" class="img-container">
-										<img src="images/tecnopazifico.jpg" class="card-img-top" alt="logo tecnopazifico">
-										<div class="overlay">
-											<span>Gestionar</span>
-										</div>
-									</a>
-									<hr>
-									<div class="card-body">
-										<div class="op-semilleros">
-											<a href="#" class="op-link mx-4">
-												<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ 1 }}"></i>
-											</a>
-											<a href="#" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
-										</div>
-									</div>
-								</div>
-								
-								
-								<div class="card card-item mx-2 mb-3">
-									<a href="semilleros" class="img-container">
-										<img src="images/logo_1.png" class="card-img-top" alt="logo greenclouds">
-										<div class="overlay">
-											<span>Gestionar</span>
-										</div>
-									</a>
-									<hr>
-									<div class="card-body">
-										<div class="op-semilleros">
-											<a href="#" class="op-link mx-4">
-												<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ 2 }}"></i>
-											</a>
-											<a href="#" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
-										</div>
-									</div>
-								</div>
 
-								<div class="card card-item mx-2 mb-3">
-									<a href="semilleros" class="img-container">
-										<img src="images/logo_willa.png" alt="logo willamuru" class="card-img-top">
-										<div class="overlay">
-											<span>Gestionar</span>
-										</div>
-									</a>
-									<hr>
-									<div class="card-body">
-										<div class="op-semilleros">
-											<a href="#" class="op-link mx-4">
-												<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ 3 }}"></i>
-											</a>
-											<a href="#" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
-										</div>
-									</div>
-								</div>
-
-								<a href="#" class="card card-item mx-2 mb-3 icon-only" style="width: 202px;" data-target="modal_crear_semillero" onclick="openModal('modal_crear_semillero')">
-									<div class="img-container">
-										<i class="fa-solid fa-square-plus fa-2xl card-img-top"></i>
-									</div>
-									<hr class="hr-line">
-									<div class="card-body">
-										<h7>Crear Semillero</h7>
-									</div>
-								</a>
-							</div>							
 							<div class="dir options justify-content-center">
 								@foreach($semilleros as $semillero)
-									<div class="card card-item mx-2 mb-3">
-										<a href="{{ route('gest_semillero', $semillero->nomSemillero) }}" class="img-container">
+								<div class="card card-item mx-2 mb-3">
+										<a href="{{ route('gest_semillero', $semillero->codSemillero) }}" class="img-container">
 											<img src="{{ asset('storage/' . $semillero->logoSemillero) }}" class="card-img-top" alt="logo {{ $semillero->nomSemillero}}">
 											<div class="overlay">
 												<span>Gestionar</span>
@@ -196,11 +133,20 @@
 												<a href="#" class="op-link mx-4">
 													<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ json_encode($semillero) }}"></i>
 												</a>
-												<a href="#" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
+												<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
 											</div>
 										</div>
 									</div>
-								@endforeach
+									@endforeach
+								<a href="#" class="card card-item mx-2 mb-3 icon-only" style="width: 202px;" data-target="modal_crear_semillero" onclick="openModal('modal_crear_semillero')">
+									<div class="img-container">
+										<i class="fa-solid fa-square-plus fa-2xl card-img-top"></i>
+									</div>
+									<hr class="hr-line">
+									<div class="card-body">
+										<h7>Crear Semillero</h7>
+									</div>
+								</a>
 							</div>					
 						</div>
 					</div>

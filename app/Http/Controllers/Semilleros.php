@@ -73,4 +73,10 @@ class Semilleros extends Controller
         return view('Semilleros.main',
             compact('semillero','id'));
     }
+
+    public function eliminar($id){
+        $semillero = Semillero::findOrFail($id);
+        $semillero->delete();
+        return redirect()->route('main_dir');
+    }
 }

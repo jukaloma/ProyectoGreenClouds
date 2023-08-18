@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\DirectorController;
+use App\Http\Controllers\Usuarios;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Director extends Model
+class Usuario extends Model
 {
-    protected $table= 'director';
-    protected $primaryKey = 'idDir';
+    protected $table= 'usuarios';
+    protected $primaryKey = 'idUsuario';
     public $timestamps = true;
 }
