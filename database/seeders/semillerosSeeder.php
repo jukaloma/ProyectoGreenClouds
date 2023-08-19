@@ -90,7 +90,7 @@ class semillerosSeeder extends Seeder
                 'descSemillero' => 'Semillero de investigación en Ingeniería de Sistemas y Computación de la Universidad de Nariño en  San Juan de Pasto',
                 'misSemillero' => 'WillaMuru es un semillero que formará en investigación fundamentada en las Ciencias de la Computación y la Ingeniería de Sistemas, y fomentará la cultura en investigación, en emprendimiento empresarial, en innovación y desarrollo tecnológico, permitiendo la solución a problemáticas que se presentan en las comunidades en el contexto institucional y regional.',
                 'visSemillero' => 'En el año 2024, WillaMuru será un semillero de investigación reconocido por la comunidad académica a nivel regional por el compromiso con la cultura investigativa, de emprendimiento empresarial, de innovación y desarrollo tecnológico.',
-                'valSemillero' => '',
+                'valSemillero' => 'n/a',
                 'objSemillero' => 'Objetivo General
                 Fomentar la cultura investigativa, de emprendimiento empresarial, de innovación y desarrollo tecnológico acorde con las necesidades y las problemáticas del municipio de Pasto aplicando los fundamentos teóricos y prácticos de las Ciencias de la Computación y la Ingeniería de Sistemas.
                 

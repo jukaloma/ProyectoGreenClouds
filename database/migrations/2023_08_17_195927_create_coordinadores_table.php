@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('areaCoord');
             $table->date('fecVincCoord');
             $table->string('acuerNomCoord');
-            $table->unsignedInteger('usuario');
+            $table->unsignedInteger('usuario')->nullable();
             $table->unsignedInteger('semillero')->nullable();
             $table->timestamps();
             $table->foreign('semillero')->references('codSemillero')->on('semilleros');

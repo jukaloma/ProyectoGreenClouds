@@ -14,6 +14,7 @@
 					<div class="mb-3">
 						<label for="nombre" class="form-label">Nombre del Semillero:</label>
 						<input type="text" class="form-control" id="nombre" name="nombre" required disabled>
+						<input type="hidden" class="form-control" id="nombreHidden" name="nombreHidden">
 					</div>
 
 					<div class="mb-3">
@@ -75,7 +76,7 @@
 
 					<div class="mb-3">
 						<label for="valores" class="form-label">Valores:</label>
-						<textarea class="form-control" name="valores" id="valores" cols="30" rows="4"></textarea>
+						<textarea class="form-control" name="valores" id="valores" cols="30" rows="4" required></textarea>
 					</div>
 
 					<div class="mb-3">

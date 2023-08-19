@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('emailDir');
             $table->string('telDir');
             $table->string('picDir');
-            $table->unsignedInteger('usuario');
+            $table->unsignedInteger('usuario')->nullable();
             $table->timestamps();
             $table->foreign('usuario')->references('idUsuario')->on('usuarios');
         });

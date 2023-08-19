@@ -170,6 +170,7 @@ document.querySelectorAll('.op-link i').forEach(function(icon) {
         var parametro = JSON.parse(this.getAttribute('data-parametro'));
         document.querySelector('#modal_act_semillero form#signup_form').action = window.location.origin + '/act_semillero/'+ parametro.codSemillero;
         document.querySelector('#modal_act_semillero input#nombre').value = parametro.nomSemillero;
+        document.querySelector('#modal_act_semillero input#nombreHidden').value = parametro.nomSemillero;
         document.querySelector('#modal_act_semillero input#correo').value = parametro.emailSemillero;
         document.querySelector('#modal_act_semillero #logo-preview').src = "storage/" + parametro.logoSemillero;
         document.querySelector('#modal_act_semillero #descripcion').value = parametro.descSemillero;

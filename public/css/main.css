@@ -548,6 +548,15 @@ iframe {
   border-radius: 5px;
 }
 
+#modal_crear_proyecto .modal-content, #modal_crear_evento .modal-content{
+  height: max-content;
+}
+
+#modal_crear_proyecto .modal-content .container, #modal_crear_evento .modal-content .container{
+  border: none;
+  background: none;
+}
+
 .modal-content .container{
   width: 100%;
   max-height: 90%;

@@ -39,7 +39,8 @@
 		</nav>
 	</div>
 
-
+	@include('Componentes.modal_crear_proyecto')
+	@include('Componentes.modal_crear_evento')
 
     <div class="components">
         <div class="content">
@@ -57,8 +58,7 @@
 								<div class="widget-null">
 									<img src="{{ asset('images/crea-proy.png')}}" alt="">
 									<p>Este semillero aún no tiene Proyectos. </p> <br>
-									<!-- <a href="#content-proyectos" class="nav_link"><i class="fa-solid fa-folder-plus"></i></a> -->
-									<button class="btn btn-success">Crear proyecto</button>
+									<button class="btn btn-success" data-target="modal_crear_proyecto" onclick="openModal('modal_crear_proyecto')">Crear proyecto</button>
 								</div>
 									<!-- <ul>
 										<li>Proyecto 1</li>
@@ -76,7 +76,7 @@
 								<div class="widget-null">
 									<img src="{{ asset('images/crea-event.png')}}" alt="">
 									<p>Este semillero aún no tiene Eventos. </p> <br>
-									<button class="btn btn-success">Crear evento</button>
+									<button class="btn btn-success" data-target="modal_crear_evento" onclick="openModal('modal_crear_evento')">Crear evento</button>
 								</div>
 									<!-- <ul>
 										<li>Proyecto 1</li>

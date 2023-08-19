@@ -51,7 +51,7 @@
 
 						<div class="mb-3">
 							<label for="selLinea" class="form-label">Línea de Investigación:</label>
-							<select class="js-example-basic-single js-states form-control" id="selCoord">
+							<select class="js-example-basic-single js-states form-control" id="selLinea" name="selLinea">
 								<option selected>Seleccionar Línea</option>
 								<option value="Ingeniería en Computación">Ingeniería en Computación</option>
 								<option value="Ciencia en Computación">Ciencia en Computación</option>

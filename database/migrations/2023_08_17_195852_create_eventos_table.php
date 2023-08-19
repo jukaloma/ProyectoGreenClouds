@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('lugarEvento');
             $table->string('tipoEvento');
             $table->char('modEvento');
-            $table->string('clasEvento',30);
-            $table->text('obsEvento',30);
+            $table->string('clasEvento');
+            $table->text('obsEvento');
             $table->timestamps();
         });
     }
