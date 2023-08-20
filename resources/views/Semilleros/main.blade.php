@@ -6,11 +6,24 @@
 
 @section('content')
 @include('Componentes.header')
-@php
-	if(empty($id)){
-		$id='test';
-	}
-@endphp
+@if ($errors->any())
+	<script>
+		Swal.fire({
+			icon: 'error',
+			title: 'Error',
+			text: '{{ $errors->first() }}',
+		});
+	</script>
+@endif
+@if(session('success'))
+	<script>
+		Swal.fire({
+			icon: 'success',
+			title: 'Éxito',
+        	text: '{{ session('success') }}'
+		});
+	</script>
+@endif
 <section class="semilleros">
 	<div class="l-navbar" id="l-nav-bar">
 		<nav class="nav">
@@ -105,13 +118,14 @@
 				<div class="content-item-title">
 					<h4>{{ $semillero->nomSemillero }}</h4>
 				</div>
-				<div class="card card-item mx-2 mb-3">
-					<a href="tecnopazifico" class="img-container">
-						<img src="{{ asset('images/tecnopazifico.jpg')}}" class="card-img-top" alt="logo tecnopazifico">
-						<div class="overlay">
+				<div class="card card-item mx-2 mb-3 justify-content-center" style="width: 500px">
+					<!-- <a href="tecnopazifico" class="img-container"> -->
+						<!-- <img src="{{ asset('images/tecnopazifico.jpg')}}" class="card-img-top" alt="logo tecnopazifico"> -->
+						<!-- <div class="overlay">
 							<span>Ver mas</span>
-						</div>
-					</a>
+						</div> -->
+					<!-- </a> -->
+					<h5>FORMULACIÓN DE UNA PROPUESTA TIC ENFOCADA A LOS PROBLEMAS DE SEGURIDAD PRESENTADOS EN LA SEDE IPIALES DE LA UNIVERSIDAD DE NARIÑO</h5>
 					<hr>
 					<div class="card-body">
 						<div class="op-semilleros">

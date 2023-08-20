@@ -7,19 +7,19 @@
 				<h4>Crear Proyecto</h4>
 			</div>
 			<div class="container mt-3 mb-3">
-				<form class="wrap-form-signup100" action="{{ route('reg_semillero') }}" id="signup_form" enctype="multipart/form-data" method="POST">
+				<form class="wrap-form-signup100" action="{{ route('reg_proyecto', $id) }}" id="signup_form" enctype="multipart/form-data" method="POST">
 					@csrf
 					
                     <div class="form_section1" id="form_section1">
 						
 						<div class="wrap-input100">
-                            <input class="input100" type="text" name="titulo" placeholder="Título Proyecto">
+                            <input class="input100" type="text" name="titulo" placeholder="Título Proyecto *" required>
                             <span class="focus-input100"></span>
                         </div>
 
 						<div class="wrap-input100">
-                            <select class="input100" aria-label="Tipo" name="selTipo" placeholder="Tipo">
-                                <option value="" selected disabled>Elija el tipo de proyecto</option>
+                            <select class="input100" aria-label="Tipo" name="selTipo" placeholder="Tipo" required>
+                                <option value="" selected disabled>Elija el tipo de proyecto *</option>
                                 <option value="investigacion">investigación</option>
                                 <option value="innovacion">innovación</option>
                                 <option value="desarrollo">desarrollo</option>
@@ -29,8 +29,8 @@
                         </div>
 
 						<div class="wrap-input100">
-                            <select class="input100" aria-label="Estado" name="selEstado" placeholder="Estado">
-                                <option value="" selected disabled>Elija el Estado del proyecto</option>
+                            <select class="input100" aria-label="Estado" name="selEstado" placeholder="Estado" required>
+                                <option value="" selected disabled>Elija el Estado del proyecto *</option>
                                 <option value="propuesta">Propuesta</option>
                                 <option value="en curso">En Curso</option>
                                 <option value="finalizado">Finalizado</option>
@@ -39,8 +39,8 @@
                         </div>
 
 						<div class="wrap-input100-date">
-                            <label class="form-check-label" for="fechaIni">Fecha de Inicio:</label>
-                            <input class="form-date-input" type="date" name="fechaIni" id="fechaIni">
+                            <label class="form-check-label" for="fechaIni">Fecha de Inicio: *</label>
+                            <input class="form-date-input" type="date" name="fechaIni" id="fechaIni" required>
                             <span class="focus-input100"></span>
                         </div>
                     </div>
@@ -55,11 +55,10 @@
                             <label for="repmat" class="input100">
                                 <i class="fa fa-cloud-upload"></i> 
                                 <div class="input-text">
-                                    Cargar Propuesta proyecto
+                                    Cargar Propuesta *
                                 </div>
                             </label>
-                            <input id="repmat" type="file" name="fileRep" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
-                            <span class="focus-input100"></span>
+                            <input id="repmat" type="file" name="fileProp" placeholder="Propuesta" style="display:none;" onchange="fileUploaded(this)" required>
                         </div>
 
                         <div class="wrap-input100">
@@ -69,14 +68,13 @@
                                     Cargar Proyecto final
                                 </div>
                             </label>
-                            <input id="repmat" type="file" name="fileRep" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
-                            <span class="focus-input100"></span>
+                            <input id="repmat" type="file" name="fileProy" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
                         </div>
 					</div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn col-md-5">Crear</button>
+                    </div>
 				</form>
-                <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn col-md-5">Crear</button>
-                </div>
 			</div>
 		</div>
 	</div>

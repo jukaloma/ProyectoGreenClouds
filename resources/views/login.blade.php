@@ -86,7 +86,7 @@
 					</div>
 				</a>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="principal">
 					<span class="login100-form-title">
 						Inicio de sesión
 					</span>

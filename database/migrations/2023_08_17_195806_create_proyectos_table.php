@@ -17,10 +17,12 @@ return new class extends Migration
             $table->text('tipProy');
             $table->string('estProy');
             $table->date('fecIniProy');
-            $table->date('fecFinProy');
+            $table->date('fecFinProy')->nullable();
             $table->string('propProy');
-            $table->char('finProy');
+            $table->string('finProy')->nullable();
+            $table->unsignedInteger('semillero');
             $table->timestamps();
+            $table->foreign('semillero')->references('codSemillero')->on('semilleros');
         });
     }
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\Semilleristas;
 use App\Http\Controllers\Coordinadores;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\Semilleros;
+use App\Http\Controllers\Proyectos;
+use App\Http\Controllers\Eventos;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,9 @@ Route::post('reg_coordinador', [Coordinadores::class, 'registrar'])->name('reg_c
 Route::post('reg_director', [DirectorController::class, 'registrar'])->name('reg_director');
 
 
+Route::post('reg_proyecto/{id}', [Proyectos::class, 'registrar'])->name('reg_proyecto');
 
+Route::post('reg_evento/{id}', [Eventos::class, 'registrar'])->name('reg_evento');
 
 
 

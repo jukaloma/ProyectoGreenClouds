@@ -8,15 +8,24 @@ use App\Models\Proyecto;
 
 class Proyectos extends Controller
 {
-    public function crear(Request $r){
+    public function registrar(Request $r, $id){
         $proyecto = new Proyecto();
-        $proyecto->nomDir = $r->input('txtNom');
-        $proyecto->emailDir = $r->input('txtEmail');
-        $proyecto->telDir = $r->input('txtTel');
-        $proyecto->picDir = $picPath;
-        $proyecto->usuDir = $r->input('txtUsu');
-        $proyecto->passDir = $r->input('txtPass');
+        $prop = $r->file('fileProp');
+        $propPath = $prop->store('Proyectos/propuestas','public') ;
+        $proy = $r->file('fileProy');
+        $proyPath = "";
+        if ($proy) {
+            $proyPath = $proy->store('Proyectos/proyectos','public') ;
+        }
+        $proyecto->titProy = $r->input('titulo');
+        $proyecto->tipProy = $r->input('selTipo');
+        $proyecto->estProy = $r->input('selEstado');
+        $proyecto->fecIniProy = $r->input('fechaIni');
+        $proyecto->fecFinProy = $r->input('fechaFin');
+        $proyecto->propProy = $propPath;
+        $proyecto->finProy = $proyPath;
+        $proyecto->semillero = $id;
         $proyecto->save();
-        return redirect()->to('/')->with(['success' => 'Cuenta creada exitosamente'])->withInput();
+        return redirect()->route('gest_semillero', $id)->with(['success' => 'Proyecto creado exitosamente'])->withInput();
     }
 }

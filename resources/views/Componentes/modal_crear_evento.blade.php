@@ -7,41 +7,41 @@
 				<h4>Crear Evento</h4>
 			</div>
 			<div class="container mt-3 mb-3">
-				<form class="wrap-form-signup100" action="{{ route('reg_semillero') }}" id="signup_form" enctype="multipart/form-data" method="POST">
+				<form class="wrap-form-signup100" action="{{ route('reg_evento', $id) }}" id="signup_form" enctype="multipart/form-data" method="POST">
 					@csrf
 					
                     <div class="form_section1" id="form_section1">
 						
 						<div class="wrap-input100">
-                            <input class="input100" type="text" name="nombre" placeholder="nombre Evento">
+                            <input class="input100" type="text" name="nombre" placeholder="nombre Evento" required>
                             <span class="focus-input100"></span>
                         </div>
                         
 						<div class="wrap-input100">
-						<textarea class="input100 py-2" name="descripcion" id="descripcion" cols="30" rows="4" placeholder="Descripción"></textarea>
+						<textarea class="input100 py-2" name="descripcion" id="descripcion" cols="30" rows="4" placeholder="Descripción" required></textarea>
                             <span class="focus-input100"></span>
                         </div>
 
 						<div class="wrap-input100-date">
                             <label class="form-check-label" for="fechaIni">Fecha de Inicio:</label>
-                            <input class="form-date-input" type="date" name="fechaIni" id="fechaIni">
+                            <input class="form-date-input" type="date" name="fechaIni" id="fechaIni" required>
                             <span class="focus-input100"></span>
                         </div>
                         
 						<div class="wrap-input100-date">
                             <label class="form-check-label" for="fechaFin">Fecha de Finalización:</label>
-                            <input class="form-date-input" type="date" name="fechaFin" id="fechaFin">
+                            <input class="form-date-input" type="date" name="fechaFin" id="fechaFin" required>
                             <span class="focus-input100"></span>
                         </div>
 						
 						<div class="wrap-input100">
-                            <input class="input100" type="text" name="lugar" placeholder="lugar Evento">
+                            <input class="input100" type="text" name="lugar" placeholder="lugar Evento" required>
                             <span class="focus-input100"></span>
                         </div>
                     </div>
                     <div class="form_section1" id="form_section1">
 						<div class="wrap-input100">
-                            <select class="input100" aria-label="Tipo" name="selTipo" placeholder="Tipo">
+                            <select class="input100" aria-label="Tipo" name="selTipo" placeholder="Tipo" required>
                                 <option value="" selected disabled>Elija el tipo de evento</option>
                                 <option value="congreso">congreso</option>
                                 <option value="encuentro">encuentro</option>
@@ -68,7 +68,7 @@
                         </div>
 
 						<div class="wrap-input100">
-                            <select class="input100" aria-label="Clasificación" name="selClasificacion" placeholder="Clasificación">
+                            <select class="input100" aria-label="Clasificación" name="selClasificacion" placeholder="Clasificación" required>
                                 <option value="" selected disabled>Elija la clasificación del proyecto</option>
                                 <option value="local">Local</option>
                                 <option value="regional">Regional</option>
@@ -79,14 +79,14 @@
                         </div>
                         
 						<div class="wrap-input100">
-						<textarea class="input100 py-2" name="observaciones" id="observaciones" cols="30" rows="4" placeholder="Observaciones"></textarea>
+						<textarea class="input100 py-2" name="observaciones" id="observaciones" cols="30" rows="4" placeholder="Observaciones" required></textarea>
                             <span class="focus-input100"></span>
                         </div>
 					</div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn col-md-5">Crear</button>
+                    </div>
 				</form>
-                <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn col-md-5">Crear</button>
-                </div>
 			</div>
 		</div>
 	</div>
