@@ -52,7 +52,39 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav_link');
     const contentItems = document.querySelectorAll('.content-item');
-    // const 
+    const btnProy = document.getElementById('btn_proy');
+    const btnEvent = document.getElementById('btn_event');
+    const btnSems = document.getElementById('btn_sems');
+
+    if (btnProy) {
+        btnProy.addEventListener("click", function() {
+            const linkProyectos = document.getElementById("link_proy");
+    
+            if (linkProyectos) {
+                linkProyectos.click();
+            }
+        });
+    }
+
+    if (btnEvent) {
+        btnEvent.addEventListener("click", function() {
+            const linkEventos = document.getElementById("link_event");
+
+            if (linkEventos) {
+                linkEventos.click();
+            }
+        });
+    }
+
+    if (btnSems) {
+        btnSems.addEventListener("click", function() {
+            const linkSemilleristas = document.getElementById("link_sems");
+
+            if (linkSemilleristas) {
+                linkSemilleristas.click();
+            }
+        });
+    }
 
     navLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
