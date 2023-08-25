@@ -49,7 +49,7 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="id_label_single" class="form-label">Asignar coordinador</label>
+						<label for="selCoord" class="form-label">Asignar coordinador</label>
 							<select class="js-example-basic-single js-states form-control" id="selCoord">
 								<option selected>Seleccionar</option>
 								<option value="1">One</option>

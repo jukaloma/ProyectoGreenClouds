@@ -22,4 +22,20 @@ class Eventos extends Controller
         $evento->save();
         return redirect()->route('gest_semillero', $id)->with(['success' => 'Evento creado exitosamente'])->withInput();
     }
+    
+    public function actualizar(Request $r, $id, $sem){
+        $evento = Evento::findOrFail($id);
+        $evento->codEvento = $id;
+        $evento->nomEvento = $r->input('nombre');
+        $evento->descEvento = $r->input('descripcion');
+        $evento->fecIniEvento = $r->input('fechaIni');
+        $evento->fecFinEvento = $r->input('fechaFin');
+        $evento->lugarEvento = $r->input('lugar');
+        $evento->tipoEvento = $r->input('selTipo');
+        $evento->modEvento = $r->input('rdMod');
+        $evento->clasEvento = $r->input('selClasificacion');
+        $evento->obsEvento = $r->input('observaciones');
+        $evento->save();
+        return redirect()->route('gest_semillero', $sem)->with(['success' => 'evento actualizado exitosamente'])->withInput();
+    }
 }

@@ -257,6 +257,7 @@ iframe {
 
 .form_section1{
   width: 46%;
+  min-width: 300px;
 }
 
 .wrap-form-signup100{
@@ -520,7 +521,7 @@ iframe {
   justify-content: center;
   align-items: center;
   width: 50%;
-  text-decoration: none;
+  text-decoration: none !important;
   font-size: 20px;
   color: #666666;
   transition: 0.3s;
@@ -535,7 +536,7 @@ iframe {
 }
 
 /*------------------------------------------------------------------
-[ Modal creación semillero ]*/
+[ Modales]*/
 
 
 .modal{
@@ -548,9 +549,6 @@ iframe {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
-
-/*------------------------------------------------------------------
-[ Modal actualización semillero ]*/
 
 .modal-content {
   background-color: #fff;
@@ -628,6 +626,17 @@ iframe {
   background-color: #66666671;
 }
 
+.modal-content .current-file{
+  padding: 5px;
+  text-align: center;
+  font-family: 'Poppins-Medium';
+  font-size: 15px;
+}
+
+.modal-content .current-file a{
+  text-decoration: underline;
+}
+
 /*------------------------------------------------------------------
 [ Semilleros view ]*/
 
@@ -635,6 +644,11 @@ section.semilleros{
   display: flex;
   flex-direction: row;
   height: calc(100% - 85px);
+}
+
+section.semilleros .modal-content .container{
+  border: none;
+  background: none;
 }
 
 /*-------------------------------------------------
@@ -713,6 +727,10 @@ section.semilleros{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.components table a{
+  text-decoration: underline;
 }
 /*-------------------------------------------------
 [ contenido dashboard ]*/

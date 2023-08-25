@@ -130,7 +130,7 @@
 										<hr>
 										<div class="card-body">
 											<div class="op-semilleros">
-												<a href="#" class="op-link mx-4">
+												<a href="#" class="op-link mx-4" id="act_semillero">
 													<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ json_encode($semillero) }}"></i>
 												</a>
 												<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>

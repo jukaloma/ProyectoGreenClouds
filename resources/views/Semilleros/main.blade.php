@@ -52,8 +52,16 @@
 		</nav>
 	</div>
 
+	@php
+		$proyectos = DB::table('proyectos')->where('semillero', $semillero->codSemillero)->get();
+		$eventos = DB::table('eventos')->get();
+		$semilleristas = DB::table('semilleristas')->where('semillero', $semillero->codSemillero)->get();
+	@endphp
 	@include('Componentes.modal_crear_proyecto')
+	@include('Componentes.modal_act_proyecto')
 	@include('Componentes.modal_crear_evento')
+	@include('Componentes.modal_act_evento')
+	@include('Componentes.modal_act_semillerista')
 
     <div class="components">
         <div class="content">
@@ -67,9 +75,6 @@
 							<div class="card-header">
 								Proyectos
 							</div>
-							@php
-								$proyectos = DB::table('proyectos')->where('semillero', $semillero->codSemillero)->get();
-							@endphp
 							<div class="card-body">
 								@if ($proyectos->isEmpty())
 									<div class="widget-null">
@@ -98,9 +103,6 @@
 							<div class="card-header">
 								Eventos
 							</div>
-							@php
-								$eventos = DB::table('eventos')->get();
-							@endphp
 							<div class="card-body">
 								@if ($eventos->isEmpty())
 									<div class="widget-null">
@@ -135,14 +137,12 @@
 							<div class="card-header">
 								Semilleristas
 							</div>
-							@php
-								$semilleristas = DB::table('semilleristas')->where('semillero', $semillero->codSemillero)->get();
-							@endphp
 							<div class="card-body">
 								@if ($semilleristas->isEmpty())
 									<div class="widget-null">
 										<img src="{{ asset('images/user-null.png')}}" alt="">
-										<p>Aún no hay semilleristas vinculados a este semillero. </p> <br>
+										<p>Aún no hay semilleristas vinculados a este semillero. </p><br>
+										<button class="btn btn-success" data-target="modal_crear_proyecto" onclick="openModal('modal_crear_proyecto')">Crear Semillerista</button>
 									</div>
 								@else
 									<div class="tabla-sems">
@@ -183,7 +183,7 @@
 						<h4>{{ $semillero->nomSemillero }}</h4><br>
 						<h6 class="pl-2 pt-2"> Proyectos</h6> 
 					</div>
-					<div class="login100-form-btn col-md-2 mb-3" id="btn_sems">Agregar Proyecto</div>
+					<div class="login100-form-btn col-md-2 mb-3"  data-target="modal_crear_proyecto" onclick="openModal('modal_crear_proyecto')">Agregar Proyecto</div>
 				</div>
 				<div class="card mx-2 mb-3">
 					<table class="table table-striped table-hover">
@@ -230,10 +230,10 @@
 										@endif
 										<td class="align-middle">
 											<div class="opt-table pr-3">
-												<a href="#" class="op-link">
-													<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ json_encode($semillero) }}"></i>
+												<a href="#" class="op-link" id="act_proy">
+													<i class="fa-solid fa-pen-to-square" data-target="modal_act_proyecto" onclick="openModal('modal_act_proyecto')" data-parametro="{{ json_encode($proyecto) }}"></i>
 												</a>
-												<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link">
+												<a href="{{ route('del_proyecto', $proyecto->codProy) }}" class="op-link">
 													<i class="fa-solid fa-trash-can"></i>
 												</a>
 											</div>
@@ -246,15 +246,147 @@
 				</div>
 			</div>
 			<div id="content-eventos" class="content-item hidden">
-				<div class="content-item-title">
-					<h4>{{ $semillero->nomSemillero }}</h4>
-					<h6 class="pl-2 pt-2">Eventos</h6>
+				<div class="content-header">
+					<div class="content-item-title">
+						<h4>{{ $semillero->nomSemillero }}</h4><br>
+						<h6 class="pl-2 pt-2"> Eventos</h6> 
+					</div>
+					<div class="login100-form-btn col-md-2 mb-3" data-target="modal_crear_evento" onclick="openModal('modal_crear_evento')">Agregar Evento</div>
+				</div>
+				<div class="card mx-2 mb-3">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Nombre</th>
+								<th scope="col">Descripción</th>
+								<th scope="col">Fecha Inicio</th>
+								<th scope="col">Fecha Fin</th>
+								<th scope="col">Lugar</th>
+								<th scope="col">Tipo</th>
+								<th scope="col">Modalidad</th>
+								<th scope="col">Clasificación</th>
+								<th scope="col">Observaciones</th>
+								<th scope="col">Opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if($eventos->isEmpty())
+								<tr>
+									<td colspan="10" class="text-center">
+										No hay eventos registrados
+									</td>
+								</tr>
+							@else
+								@foreach($eventos as $evento)
+									<tr>
+										<th scope="row" class="limited-column align-middle">{{ $evento->nomEvento }}</td>
+										<td class="align-middle">{{ $evento->descEvento }}</td>
+										<td class="align-middle">{{ $evento->fecIniEvento }}</td>
+										<td class="align-middle">{{ $evento->fecFinEvento }}</td>
+										<td class="align-middle">{{ $evento->lugarEvento }}</td>
+										<td class="align-middle">{{ $evento->tipoEvento }}</td>
+										<td class="align-middle">{{ $evento->modEvento }}</td>
+										<td class="align-middle">{{ $evento->clasEvento }}</td>
+										<td class="align-middle">{{ $evento->obsEvento }}</td>
+										<td class="align-middle">
+											<div class="opt-table pr-3">
+												<a href="#" class="op-link" id="act_evento">
+													<i class="fa-solid fa-pen-to-square" data-target="modal_act_evento" onclick="openModal('modal_act_evento')" data-parametro="{{ json_encode($evento) }}" semillero="{{ $id }}"></i>
+												</a>
+												<a href="{{ route('del_evento', $evento->codEvento) }}" class="op-link">
+													<i class="fa-solid fa-trash-can"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								@endforeach
+							@endif
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div id="content-semilleristas" class="content-item hidden">
-				<div class="content-item-title">
-					<h4>{{ $semillero->nomSemillero }}</h4>
-					<h6 class="pl-2 pt-2">Semilleristas</h6>
+				<div class="content-header">
+					<div class="content-item-title">
+						<h4>{{ $semillero->nomSemillero }}</h4><br>
+						<h6 class="pl-2 pt-2"> Semilleristas</h6> 
+					</div>
+					<div class="login100-form-btn col-md-2 mb-3" id="btn_sems">Agregar Semillerista</div>
+				</div>
+				<div class="card mx-2 mb-3">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Código</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Dirección</th>
+								<th scope="col">teléfono</th>
+								<th scope="col">Correo</th>
+								<th scope="col">Sexo</th>
+								<th scope="col">Fecha Nacimiento</th>
+								<th scope="col">Semestre</th>
+								<th scope="col">Foto</th>
+								<th scope="col">Reporte de Matrícula</th>
+								<th scope="col">Fecha de vinculación</th>
+								<th scope="col">Proyecto</th>
+								<th scope="col">Estado</th>
+								<th scope="col">Opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if($semilleristas->isEmpty())
+								<tr>
+									<td colspan="15" class="text-center">
+										No hay semilleristas registrados
+									</td>
+								</tr>
+							@else
+								@foreach($semilleristas as $semillerista)
+									<tr>
+										<th scope="row" class="align-middle">{{ $semillerista->codSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->nomSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->dirSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->telSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->emailSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->sexSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->fecNacSemillerista }}</td>
+										<td class="align-middle">{{ $semillerista->semSemillerista }}</td>
+										@if($semillerista->picSemillerista)
+											<td class="align-middle">
+												<a href="{{ asset('storage/' . $semillerista->picSemillerista) }}" target="_blank">Ver Foto</a>
+											</td>
+										@else
+											<td class="align-middle">n/a</td>
+										@endif
+										@if($semillerista->repMatricula)
+											<td class="align-middle">
+												<a href="{{ asset('storage/' . $semillerista->repMatricula) }}" target="_blank">Descargar Archivo</a>
+											</td>
+										@else
+											<td class="align-middle">n/a</td>
+										@endif
+										<td class="align-middle">{{ $semillerista->fecVincSemillerista }}</td>
+										@if($semillerista->proyecto)
+										<td class="align-middle">{{ $proyectos->where('codProy', $semillerista->proyecto)->first()->titProy }}</td>
+										@else
+											<td class="align-middle">n/a</td>
+										@endif
+										<td class="align-middle">{{ $semillerista->estSemillerista }}</td>
+										<td class="align-middle">
+											<div class="opt-table pr-3">
+												<a href="#" class="op-link" id="act_semillerista">
+													<i class="fa-solid fa-pen-to-square"data-target="modal_act_semillerista" onclick="openModal('modal_act_semillerista')" data-parametro="{{ json_encode($semillerista) }}"></i>
+												</a>
+												<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link">
+													<i class="fa-solid fa-trash-can"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								@endforeach
+							@endif
+						</tbody>
+					</table>
 				</div>
 			</div>
         </div>

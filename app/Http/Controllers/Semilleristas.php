@@ -36,4 +36,40 @@ class Semilleristas extends Controller
         $semillerista->save();
         return redirect()->to('/')->with(['success' => 'Cuenta creada exitosamente'])->withInput();
     }
+
+    public function actualizar(Request $r, $id){
+        $semillerista = Semillerista::findOrFail($id);
+        if ($r->hasFile('filePic')) {
+            if (Storage::exists($semillerista->picSemillerista)) {
+                Storage::delete($semillerista->picSemillerista);
+            }
+            $picPath = $r->file('filePic')->store('Semilleristas/fotos/','public') ;
+        }else{
+            $picPath = $semillerista->picSemillerista;
+        }
+        if ($r->hasFile('fileRep')) {
+            if (Storage::exists($semillerista->repMatricula)) {
+                Storage::delete($semillerista->repMatricula);
+            }
+            $repPath = $r->file('fileRep')->store('Semilleristas/Reportes/','public') ;
+        }else{
+            $repPath = $semillerista->repMatricula;
+        }
+        $semillerista->codSemillerista = $id;
+        $semillerista->nomSemillerista = $r->input('txtNom');
+        $semillerista->dirSemillerista = $r->input('txtDir');
+        $semillerista->telSemillerista = $r->input('txtTel');
+        $semillerista->emailSemillerista = $r->input('txtEmail');
+        $semillerista->sexSemillerista = $r->input('rdSex');
+        $semillerista->fecNacSemillerista = $r->input('txtFecNac');
+        $semillerista->semSemillerista = $r->input('selSems');
+        $semillerista->picSemillerista = $picPath;
+        $semillerista->repMatricula = $repPath;
+        $semillerista->progSemillerista = $r->input('selProg');
+        $semillerista->fecVincSemillerista = $r->input('txtFecVinc');
+        $semillerista->estSemillerista = $r->input('rdEst');
+        $semillerista->proyecto = $r->input('selProy');
+        $semillerista->save();
+        return redirect()->route('gest_semillero', $semillerista->semillero)->with(['success' => 'Cuenta actualizada exitosamente'])->withInput();
+    }
 }

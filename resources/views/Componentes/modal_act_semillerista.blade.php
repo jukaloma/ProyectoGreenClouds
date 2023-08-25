@@ -1,40 +1,38 @@
-@extends('template')
-
-@section('title', 'Registro de usuario')
-
-@section('content')
-    <div class="limiter">
-		<div class="container-login100">
-            <div class="wrap-signup100">
-                <form class="wrap-form-signup100" action="{{ route('reg_semillerista') }}" id="signup_form" enctype="multipart/form-data" method="POST">
+<div id="modal_act_semillerista" class="modal" onclick="closeModal('modal_act_semillerista')">
+	<div class="modal-content" onclick="event.stopPropagation();">
+		<div class="form-close-container">
+			<button class="close-modal" onclick="closeModal('modal_act_semillerista')"><i class="fa-solid fa-xmark"></i></button>
+		</div>
+		<div class="form-title">
+			<h4>Actualizar Semillerista</h4>
+		</div>
+		<div class="container mt-3 mb-3">
+		<form class="wrap-form-signup100" id="signup_form" enctype="multipart/form-data" method="POST">
                     @csrf
-                    <span class="login100-form-title" id="signup_title">
-                        Registrate <br>1 / 2
-                    </span>
                     <div class="form_section1" id="form_semillerista1">
                         <div class="signup-input-container" >
                             <div class="wrap-input100">
-                                <input class="input100" type="text" name="txtCod" placeholder="Código">
+                                <input class="input100" type="text" name="txtCod" id="txtCod" placeholder="Código" disabled>
                                 <span class="focus-input100"></span>
                             </div>
                             
                             <div class="wrap-input100">
-                                <input class="input100" type="text" name="txtNom" placeholder="Nombre Completo">
+                                <input class="input100" type="text" name="txtNom" id="txtNom" placeholder="Nombre Completo">
                                 <span class="focus-input100"></span>
                             </div>
                             
                             <div class="wrap-input100">
-                                <input class="input100" type="text" name="txtDir" placeholder="Dirección">
+                                <input class="input100" type="text" name="txtDir" id="txtDir" placeholder="Dirección">
                                 <span class="focus-input100"></span>
                             </div>
                             
                             <div class="wrap-input100">
-                                <input class="input100" type="text" name="txtTel" placeholder="Teléfono">
+                                <input class="input100" type="text" name="txtTel" id="txtTel" placeholder="Teléfono">
                                 <span class="focus-input100"></span>
                             </div>
                             
                             <div class="wrap-input100">
-                                <input class="input100" type="email" name="txtEmail" placeholder="Correo" required>
+                                <input class="input100" type="email" name="txtEmail" id="txtEmail" placeholder="Correo">
                                 <span class="focus-input100"></span>
                             </div>
                             
@@ -53,18 +51,9 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form_section1" id="form_semillerista1">
-                        <div class="signup-input-container">
-                            <div class="wrap-input100-date">
-                                <label class="form-check-label" for="txtFecNac">Fecha de nacimiento</label>
-                                <input class="form-date-input" type="date" name="txtFecNac" id="txtFecNac">
-                                <span class="focus-input100"></span>
-                            </div>
                             
                             <div class="wrap-input100">
-                                <select class="input100" aria-label="Semestre" name="selSems" placeholder="Semestre">
+                                <select class="input100" aria-label="Semestre" name="selSems" id="selSems" placeholder="Semestre">
                                     <option value="" selected disabled>Elija su semestre</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -81,6 +70,28 @@
                             </div>
                             
                             <div class="wrap-input100">
+                                <select class="input100" aria-label="Programa" name="selProg" id="selProg">
+                                    <option value="" selected disabled>Elija su programa</option>
+                                    <option value="Sistemas">Ing Sistemas</option>
+                                    <option value="Electronica">Ing Electrónica</option>
+                                    <option value="Civil">Ing Civil</option>
+                                </select>
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_section1" id="form_semillerista1">
+                        <div class="signup-input-container">
+                            <div class="wrap-input100-date">
+                                <label class="form-check-label" for="txtFecNac">Fecha de nacimiento</label>
+                                <input class="form-date-input" type="date" name="txtFecNac" id="txtFecNac">
+                                <span class="focus-input100"></span>
+                            </div>
+
+							<div class="current-file">
+								<a id="fotoSemillerista"><i class="fa-solid fa-eye"></i>Ver foto Actual</a>
+							</div>
+                            <div class="wrap-input100">
                                 <label for="foto" class="input100">
                                     <i class="fa fa-cloud-upload"></i> 
                                     <div class="input-text">
@@ -90,7 +101,10 @@
                                 <input id="foto" type="file" name="filePic" placeholder="Foto" accept="image/*" style="display:none;" onchange="fileUploaded(this)">
                                 <span class="focus-input100"></span>
                             </div>
-                            
+
+							<div class="current-file">
+								<a id="repSemillerista"><i class="fa-solid fa-eye"></i>Ver foto Actual</a>
+							</div>
                             <div class="wrap-input100">
                                 <label for="repmat" class="input100">
                                     <i class="fa fa-cloud-upload"></i> 
@@ -102,25 +116,12 @@
                                 <span class="focus-input100"></span>
                             </div>
                             
-                            <div class="wrap-input100">
-                                <select class="input100" aria-label="Programa" name="selProg">
-                                    <option value="" selected disabled>Elija su programa</option>
-                                    <option value="Sistemas">Ing Sistemas</option>
-                                    <option value="Electrónica">Ing Electrónica</option>
-                                    <option value="Civil">Ing Civil</option>
-                                </select>
-                                <span class="focus-input100"></span>
-                            </div>
-                            
                             <div class="wrap-input100-date">
                                 <label class="form-check-label" for="txtFecVinc">Fecha de vinculación</label>
                                 <input class="form-date-input" type="date" name="txtFecVinc" id="txtFecVinc">
                                 <span class="focus-input100"></span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form_section2" id="form_semillerista2" style="display: none;">
-                        <div class="signup-input-container">                        
+
                             <div class="wrap-input100-radio">
                                 <label class="form-check-label">Estado</label>
                                 <div class="form-check">
@@ -138,48 +139,20 @@
                             </div>
                             
                             <div class="wrap-input100">
-                                <input class="input100" type="text" name="txtUsu" placeholder="Usuario" required>
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            
-                            <div class="wrap-input100">
-                                <input class="input100" type="password" name="txtPass" id="pass" placeholder="Contraseña">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-
-                            <div class="wrap-input100">
-                                <input class="input100" type="password" name="txtPass2" id="pass2" placeholder="Repetir Contraseña">
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <small id="mensaje_validacion" class="form-title"></small>
-                            
-                            <div class="wrap-input100">
-                                <select class="input100" aria-label="Semillero" name="selSem">
-                                    <option value="" selected disabled>Elija su semillero</option>
-                                    @foreach ($semilleros as $semillero)
-                                        <option value="{{ $semillero->codSemillero }}">{{ $semillero->nomSemillero }}</option>
+                                <select class="input100" aria-label="Proyecto" name="selProy" id="selProy" placeholder="Semestre">
+                                    <option value="" selected disabled>Asignar Proyecto</option>
+                                    @foreach ($proyectos as $proyecto)
+                                        <option value="{{ $proyecto->codProy }}">{{ $proyecto->titProy }}</option>
                                     @endforeach
                                 </select>
                                 <span class="focus-input100"></span>
                             </div>
                         </div>
                     </div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn col-md-5">Actualizar</button>
+                    </div>
                 </form>
-                <div class="container-login100-form-btn">
-                    <button id="siguiente" onclick="verificarCampos()" class="login100-form-btn">
-                        Siguiente
-                    </button>
-                </div>
-            </div>
 		</div>
 	</div>
-@endsection
+</div>

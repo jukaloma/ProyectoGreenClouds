@@ -122,6 +122,7 @@ function verificarCampos() {
             todosCompletados = false;
         }
     });
+    
     var form_section1 = document.getElementById("form_section1");
     camposSeccion2.forEach(function(campo) {
         if (!campo.value && form_section1.style.display === "none") {
@@ -197,7 +198,7 @@ if (passwordField && confirmPasswordField) {
 
 //modal con envío de parámetro//////////////////////////////////////////////////////
 
-document.querySelectorAll('.op-link i').forEach(function(icon) {
+document.querySelectorAll('#act_semillero i').forEach(function(icon) {
     icon.addEventListener('click', function() {
         var parametro = JSON.parse(this.getAttribute('data-parametro'));
         document.querySelector('#modal_act_semillero form#signup_form').action = window.location.origin + '/act_semillero/'+ parametro.codSemillero;
@@ -213,6 +214,81 @@ document.querySelectorAll('.op-link i').forEach(function(icon) {
         document.querySelector('#modal_act_semillero input#linea_investigacion').value = parametro.lineaSemillero;
         document.querySelector('#modal_act_semillero input#fecha').value = parametro.fecCreaSemillero;
         openModal('modal_act_semillero');
+    });
+});
+
+document.querySelectorAll('#act_proy i').forEach(function(icon) {
+    icon.addEventListener('click', function() {
+        var parametro = JSON.parse(this.getAttribute('data-parametro'));
+        document.querySelector('#modal_act_proyecto form#signup_form').action = window.location.origin + '/act_proyecto/'+ parametro.codProy;
+        document.querySelector('#modal_act_proyecto input#titulo').value = parametro.titProy;
+        document.querySelector('#modal_act_proyecto #selTipo').value = parametro.tipProy;
+        document.querySelector('#modal_act_proyecto #selEstado').value = parametro.estProy;
+        document.querySelector('#modal_act_proyecto input#fechaIni').value = parametro.fecIniProy;
+        document.querySelector('#modal_act_proyecto input#fechaFin').value = parametro.fecFinProy;
+        document.querySelector('#modal_act_proyecto #propuesta').href = "../storage/" + parametro.propProy;
+        if (parametro.finProy) {
+            document.querySelector('#modal_act_proyecto #proyectoFinal').href = "../storage/" + parametro.finProy;
+        }else{
+            document.querySelector('#modal_act_proyecto a#proyectoFinal').innerHTML = "<i class='fa-solid fa-eye-slash'></i> No existe Proyecto actual"
+            document.querySelector('#modal_act_proyecto a#proyectoFinal').style = "text-decoration: none;"
+        }
+        openModal('modal_act_proyecto');
+    });
+});
+
+document.querySelectorAll('#act_evento i').forEach(function(icon) {
+    icon.addEventListener('click', function() {
+        var parametro = JSON.parse(this.getAttribute('data-parametro'));
+        var semillero = this.getAttribute('semillero');
+        document.querySelector('#modal_act_evento form#signup_form').action = window.location.origin + '/act_evento/'+ parametro.codEvento + "/" + semillero;
+        document.querySelector('#modal_act_evento input#nombre').value = parametro.nomEvento;
+        document.querySelector('#modal_act_evento #descripcion').value = parametro.descEvento;
+        document.querySelector('#modal_act_evento input#fechaIni').value = parametro.fecIniEvento;
+        document.querySelector('#modal_act_evento input#fechaFin').value = parametro.fecFinEvento;
+        document.querySelector('#modal_act_evento input#lugar').value = parametro.lugarEvento;
+        document.querySelector('#modal_act_evento #selTipo').value = parametro.tipoEvento;
+        if (parametro.modEvento === 'P') {
+            document.querySelector('#modal_act_evento input#rdMod1').checked = true;
+        }else{
+            
+            document.querySelector('#modal_act_evento input#rdMod2').checked = true;
+        }
+        document.querySelector('#modal_act_evento #selClasificacion').value = parametro.clasEvento;
+        document.querySelector('#modal_act_evento #observaciones').value = parametro.obsEvento;
+        openModal('modal_act_evento');
+    });
+});
+
+document.querySelectorAll('#act_semillerista i').forEach(function(icon) {
+    icon.addEventListener('click', function() {
+        var parametro = JSON.parse(this.getAttribute('data-parametro'));
+        document.querySelector('#modal_act_semillerista form#signup_form').action = window.location.origin + '/act_semillerista/'+ parametro.codSemillerista;
+        document.querySelector('#modal_act_semillerista input#txtCod').value = parametro.codSemillerista;
+        document.querySelector('#modal_act_semillerista input#txtNom').value = parametro.nomSemillerista;
+        document.querySelector('#modal_act_semillerista input#txtDir').value = parametro.dirSemillerista;
+        document.querySelector('#modal_act_semillerista input#txtTel').value = parametro.telSemillerista;
+        document.querySelector('#modal_act_semillerista input#txtEmail').value = parametro.emailSemillerista;
+        if (parametro.sexSemillerista === 'M') {
+            document.querySelector('#modal_act_semillerista input#rdSex1').checked = true;
+        }else{
+            document.querySelector('#modal_act_semillerista input#rdSex2').checked = true;
+        }
+        document.querySelector('#modal_act_semillerista #selSems').value = parametro.semSemillerista;
+        document.querySelector('#modal_act_semillerista input#txtFecNac').value = parametro.fecNacSemillerista;
+        document.querySelector('#modal_act_semillerista #fotoSemillerista').href = "../storage/" + parametro.picSemillerista;
+        document.querySelector('#modal_act_semillerista #repSemillerista').href = "../storage/" + parametro.repMatricula;
+        document.querySelector('#modal_act_semillerista input#txtFecVinc').value = parametro.fecVincSemillerista;
+        document.querySelector('#modal_act_semillerista #selProg').value = parametro.progSemillerista;
+        if (parametro.estSemillerista === 'A') {
+            document.querySelector('#modal_act_semillerista input#rdEst1').checked = true;
+        }else{
+            document.querySelector('#modal_act_semillerista input#rdEst2').checked = true;
+        }
+        if (parametro.proyecto) {
+            document.querySelector('#modal_act_semillerista #selProy').value = parametro.proyecto;
+        }
+        openModal('modal_act_semillerista');
     });
 });
 
