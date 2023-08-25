@@ -36,6 +36,12 @@ class Eventos extends Controller
         $evento->clasEvento = $r->input('selClasificacion');
         $evento->obsEvento = $r->input('observaciones');
         $evento->save();
-        return redirect()->route('gest_semillero', $sem)->with(['success' => 'evento actualizado exitosamente'])->withInput();
+        return redirect()->route('gest_semillero', $sem)->with(['success' => 'Evento actualizado exitosamente'])->withInput();
+    }
+
+    public function eliminar($id, $sem){
+        $evento = Evento::findOrFail($id);
+        $evento->delete();
+        return redirect()->route('gest_semillero', $sem)->with(['success' => 'Evento eliminado exitosamente'])->withInput();
     }
 }

@@ -1,7 +1,7 @@
 <div id="modal_act_evento" class="modal" onclick="closeModal('modal_act_evento')">
 		<div class="modal-content" onclick="event.stopPropagation();">
 			<div class="form-close-container">
-				<button class="close-modal" onclick="closeModal('modal_act_evento')"><i class="fa-solid fa-xmark"></i></button>
+				<button class="modal-aux-button close-modal" onclick="closeModal('modal_act_evento')"><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<div class="form-title">
 				<h4>Actualizar Evento</h4>

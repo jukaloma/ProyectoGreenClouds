@@ -1,7 +1,7 @@
 <div id="modal_act_proyecto" class="modal" onclick="closeModal('modal_act_proyecto')">
 		<div class="modal-content" onclick="event.stopPropagation();">
 			<div class="form-close-container">
-				<button class="close-modal" onclick="closeModal('modal_act_proyecto')"><i class="fa-solid fa-xmark"></i></button>
+				<button class="modal-aux-button close-modal" onclick="closeModal('modal_act_proyecto')"><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<div class="form-title">
 				<h4>Actualizar Proyecto</h4>
@@ -55,26 +55,26 @@
                             <a href="" id="propuesta"><i class="fa-solid fa-eye"></i>Ver Propuesta Actual</a>
                         </div>
                         <div class="wrap-input100">
-                            <label for="fileProp" class="input100">
+                            <label for="fileActProp" class="input100">
                                 <i class="fa fa-cloud-upload"></i> 
                                 <div class="input-text">
                                     Nueva Propuesta
                                 </div>
                             </label>
-                            <input id="fileProp" type="file" name="fileProp" placeholder="Propuesta" style="display:none;" onchange="fileUploaded(this)">
+                            <input id="fileActProp" type="file" name="fileProp" placeholder="Propuesta" style="display:none;" onchange="fileUploaded(this)">
                         </div>
 
                         <div class="current-file">
                             <a id="proyectoFinal"><i class="fa-solid fa-eye"></i>Ver Proyecto Final Actual</a>
                         </div>
                         <div class="wrap-input100">
-                            <label for="fileProy" class="input100">
+                            <label for="fileActProy" class="input100">
                                 <i class="fa fa-cloud-upload"></i> 
                                 <div class="input-text">
                                     Nuevo Proyecto final
                                 </div>
                             </label>
-                            <input id="fileProy" type="file" name="fileProy" placeholder="Proyecto final" style="display:none;" onchange="fileUploaded(this)">
+                            <input id="fileActProy" type="file" name="fileProy" placeholder="Proyecto final" style="display:none;" onchange="fileUploaded(this)">
                         </div>
 					</div>
                     <div class="container-login100-form-btn">

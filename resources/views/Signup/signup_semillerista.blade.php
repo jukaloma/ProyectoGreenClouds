@@ -124,15 +124,15 @@
                             <div class="wrap-input100-radio">
                                 <label class="form-check-label">Estado</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst1" value="A" checked>
+                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst1" value="Activo" checked>
                                     <label class="form-check-label" for="rdSex1">
-                                        <div class="form-radio-text">A</div>
+                                        <div class="form-radio-text">Activo</div>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst2" value="I">
+                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst2" value="Inactivo">
                                     <label class="form-check-label" for="rdSex2">
-                                        <div class="form-radio-text">I</div>
+                                        <div class="form-radio-text">Inactivo</div>
                                     </label>
                                 </div>
                             </div>

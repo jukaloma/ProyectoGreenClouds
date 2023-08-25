@@ -34,7 +34,7 @@ class Semilleristas extends Controller
         $semillerista->estSemillerista = $r->input('rdEst');
         $semillerista->semillero = $r->input('selSem');
         $semillerista->save();
-        return redirect()->to('/')->with(['success' => 'Cuenta creada exitosamente'])->withInput();
+        return redirect()->route('gest_semillero', $semillerista->semillero)->with(['success' => 'Cuenta creada exitosamente'])->withInput();
     }
 
     public function actualizar(Request $r, $id){
@@ -71,5 +71,12 @@ class Semilleristas extends Controller
         $semillerista->proyecto = $r->input('selProy');
         $semillerista->save();
         return redirect()->route('gest_semillero', $semillerista->semillero)->with(['success' => 'Cuenta actualizada exitosamente'])->withInput();
+    }
+
+    public function eliminar($id){
+        $semillerista = Semillerista::findOrFail($id);
+        $sem = $semillerista->semillero;
+        $semillerista->delete();
+        return redirect()->route('gest_semillero', $sem)->with(['success' => 'Semillerista eliminado exitosamente'])->withInput();
     }
 }

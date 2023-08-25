@@ -172,6 +172,87 @@ function mostrarSiguiente() {
     }
 }
 
+function verificarCamposModal() {
+    var camposSeccion1 = document.querySelectorAll('#form_semillerista1 [required]');
+    var camposSeccion2 = document.querySelectorAll('#form_semillerista2 [required]');
+
+    var todosCompletados = true;
+
+    camposSeccion1.forEach(function(campo) {
+        if (!campo.value) {
+            todosCompletados = false;
+        }
+    });
+    
+    var form_section1 = document.getElementById("form_semillerista1");
+    camposSeccion2.forEach(function(campo) {
+        if (!campo.value && form_section1.style.display === "none") {
+            todosCompletados = false;
+        }
+    });
+
+    
+    if (!todosCompletados) {        
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campos incompletos',
+                text: 'Por favor, complete todos los campos para continuar.',
+            });
+        }
+    else {
+        if (passwordMatchMessage.style.display === "block") {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Contraseñas no coinciden',
+                text: 'Por favor, asegurese de ingresar la misma contraseña en los campos de contraseña.',
+            });
+        }else{
+            mostrarSiguienteModal();
+        }
+    }
+}
+
+function mostrarSiguienteModal() {
+    var seccion1 = document.getElementById("form_semillerista1");
+    var secciones1 = document.querySelectorAll("#form_semillerista1");
+    var seccion2 = document.getElementById("form_semillerista2");
+    var titulo = document.getElementById("signup_title");
+    var siguienteBoton = document.getElementById("siguiente");
+    var modalBack = document.getElementById("modal_back");
+
+    if (seccion1.style.display === "none" || !seccion2) {
+        document.getElementById("signup_form").submit();
+    } else {
+        secciones1.forEach(function(seccion) {
+        if (getComputedStyle(seccion).display !== "none") {
+            seccion.style.display = "none";
+        }
+        });
+        modalBack.style.display = "block";
+        seccion2.style.display = "block";
+        siguienteBoton.innerHTML = "Enviar";
+        titulo.innerHTML = "2 / 2";
+    }
+}
+
+function modalBack(){
+    var seccion2 = document.getElementById("form_semillerista2");
+    var secciones1 = document.querySelectorAll("#form_semillerista1");
+    var titulo = document.getElementById("signup_title");
+    var siguienteBoton = document.getElementById("siguiente");
+    var modalBack = document.getElementById("modal_back");
+    
+    secciones1.forEach(function(seccion) {
+    if (getComputedStyle(seccion).display === "none") {
+        seccion.style.display = "block";
+    }
+    });
+    modalBack.style.display = "none";
+    seccion2.style.display = "none";
+    siguienteBoton.innerHTML = "Siguiente";
+    titulo.innerHTML = "1 / 2";
+}
+
 function fileUploaded(input) {
     var fileLabel = input.previousElementSibling;
     fileLabel.innerHTML = '<i class="fa fa-check-circle"></i> <div class="input-text"> Archivo cargado con éxito </div>';
@@ -280,7 +361,7 @@ document.querySelectorAll('#act_semillerista i').forEach(function(icon) {
         document.querySelector('#modal_act_semillerista #repSemillerista').href = "../storage/" + parametro.repMatricula;
         document.querySelector('#modal_act_semillerista input#txtFecVinc').value = parametro.fecVincSemillerista;
         document.querySelector('#modal_act_semillerista #selProg').value = parametro.progSemillerista;
-        if (parametro.estSemillerista === 'A') {
+        if (parametro.estSemillerista === 'Activo') {
             document.querySelector('#modal_act_semillerista input#rdEst1').checked = true;
         }else{
             document.querySelector('#modal_act_semillerista input#rdEst2').checked = true;

@@ -1,7 +1,7 @@
 <div id="modal_crear_proyecto" class="modal" onclick="closeModal('modal_crear_proyecto')">
 		<div class="modal-content" onclick="event.stopPropagation();">
 			<div class="form-close-container">
-				<button class="close-modal" onclick="closeModal('modal_crear_proyecto')"><i class="fa-solid fa-xmark"></i></button>
+				<button class="modal-aux-button close-modal" onclick="closeModal('modal_crear_proyecto')"><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<div class="form-title">
 				<h4>Crear Proyecto</h4>
@@ -52,23 +52,23 @@
                         </div>
 
                         <div class="wrap-input100">
-                            <label for="repmat" class="input100">
+                            <label for="fileProp" class="input100">
                                 <i class="fa fa-cloud-upload"></i> 
                                 <div class="input-text">
                                     Cargar Propuesta *
                                 </div>
                             </label>
-                            <input id="repmat" type="file" name="fileProp" placeholder="Propuesta" style="display:none;" onchange="fileUploaded(this)" required>
+                            <input id="fileProp" type="file" name="fileProp" placeholder="Propuesta" style="display:none;" onchange="fileUploaded(this)" required>
                         </div>
 
                         <div class="wrap-input100">
-                            <label for="repmat" class="input100">
+                            <label for="fileProy" class="input100">
                                 <i class="fa fa-cloud-upload"></i> 
                                 <div class="input-text">
                                     Cargar Proyecto final
                                 </div>
                             </label>
-                            <input id="repmat" type="file" name="fileProy" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
+                            <input id="fileProy" type="file" name="fileProy" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
                         </div>
 					</div>
                     <div class="container-login100-form-btn">

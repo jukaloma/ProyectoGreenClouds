@@ -57,11 +57,12 @@
 		$eventos = DB::table('eventos')->get();
 		$semilleristas = DB::table('semilleristas')->where('semillero', $semillero->codSemillero)->get();
 	@endphp
+	@include('Componentes.modal_crear_semillerista')
+	@include('Componentes.modal_act_semillerista')
 	@include('Componentes.modal_crear_proyecto')
 	@include('Componentes.modal_act_proyecto')
 	@include('Componentes.modal_crear_evento')
 	@include('Componentes.modal_act_evento')
-	@include('Componentes.modal_act_semillerista')
 
     <div class="components">
         <div class="content">
@@ -107,7 +108,7 @@
 								@if ($eventos->isEmpty())
 									<div class="widget-null">
 										<img src="{{ asset('images/crea-event.png')}}" alt="">
-										<p>Este semillero aún no tiene Eventos. </p> <br>
+										<p>Aún no hay Eventos. </p> <br>
 										<button class="btn btn-success" data-target="modal_crear_evento" onclick="openModal('modal_crear_evento')">Crear evento</button>
 									</div>
 								@else
@@ -142,7 +143,7 @@
 									<div class="widget-null">
 										<img src="{{ asset('images/user-null.png')}}" alt="">
 										<p>Aún no hay semilleristas vinculados a este semillero. </p><br>
-										<button class="btn btn-success" data-target="modal_crear_proyecto" onclick="openModal('modal_crear_proyecto')">Crear Semillerista</button>
+										<button class="btn btn-success" data-target="modal_crear_semillerista" onclick="openModal('modal_crear_semillerista')">Crear Semillerista</button>
 									</div>
 								@else
 									<div class="tabla-sems">
@@ -293,7 +294,7 @@
 												<a href="#" class="op-link" id="act_evento">
 													<i class="fa-solid fa-pen-to-square" data-target="modal_act_evento" onclick="openModal('modal_act_evento')" data-parametro="{{ json_encode($evento) }}" semillero="{{ $id }}"></i>
 												</a>
-												<a href="{{ route('del_evento', $evento->codEvento) }}" class="op-link">
+												<a href="{{ route('del_evento', [$evento->codEvento, $semillero->codSemillero]) }}" class="op-link">
 													<i class="fa-solid fa-trash-can"></i>
 												</a>
 											</div>
@@ -311,7 +312,7 @@
 						<h4>{{ $semillero->nomSemillero }}</h4><br>
 						<h6 class="pl-2 pt-2"> Semilleristas</h6> 
 					</div>
-					<div class="login100-form-btn col-md-2 mb-3" id="btn_sems">Agregar Semillerista</div>
+					<div class="login100-form-btn col-md-2 mb-3" data-target="modal_crear_semillerista" onclick="openModal('modal_crear_semillerista')">Agregar Semillerista</div>
 				</div>
 				<div class="card mx-2 mb-3">
 					<table class="table table-striped table-hover">
@@ -377,7 +378,7 @@
 												<a href="#" class="op-link" id="act_semillerista">
 													<i class="fa-solid fa-pen-to-square"data-target="modal_act_semillerista" onclick="openModal('modal_act_semillerista')" data-parametro="{{ json_encode($semillerista) }}"></i>
 												</a>
-												<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link">
+												<a href="{{ route('del_semillerista', $semillerista->codSemillerista) }}" class="op-link">
 													<i class="fa-solid fa-trash-can"></i>
 												</a>
 											</div>

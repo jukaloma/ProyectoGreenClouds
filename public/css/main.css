@@ -584,6 +584,12 @@ iframe {
   align-items: center;
 }
 
+.modal-content .form-modal-back{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 .modal-content .act-logo{
   object-fit: cover;
   margin-bottom: 10px;
@@ -606,10 +612,8 @@ iframe {
   justify-content: space-around;
 }
 
-.close-modal{
+.modal-aux-button{
   position: absolute;
-  top: 25px;
-  right: 5%;
   font-size: 30px;
   color: #858585;
   background: none;
@@ -621,7 +625,17 @@ iframe {
   height: 45px;
 }
 
-.close-modal:hover{
+.close-modal{
+  top: 25px;
+  right: 5%;
+}
+
+.modal-back{
+  top: 25px;
+  left: 5%;
+}
+
+.modal-aux-button:hover{
   color: #242424b0;
   background-color: #66666671;
 }
@@ -762,14 +776,21 @@ section.semilleros .modal-content .container{
 }
 
 .carousel-proy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Poppins-Medium';
   color: #666666;
-  max-height: 10vh;
+  height: 10vh;
   overflow: auto;
 }
 
 .owl-item{
   text-align: center;
+  height: 100%;
+  overflow: auto;
+  background-color: #4141411e;
+  border-radius: 25px;
 }
 
 .carousel-more{

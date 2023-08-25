@@ -1,7 +1,7 @@
 <div id="modal_act_semillerista" class="modal" onclick="closeModal('modal_act_semillerista')">
 	<div class="modal-content" onclick="event.stopPropagation();">
 		<div class="form-close-container">
-			<button class="close-modal" onclick="closeModal('modal_act_semillerista')"><i class="fa-solid fa-xmark"></i></button>
+			<button class="modal-aux-button close-modal" onclick="closeModal('modal_act_semillerista')"><i class="fa-solid fa-xmark"></i></button>
 		</div>
 		<div class="form-title">
 			<h4>Actualizar Semillerista</h4>
@@ -92,13 +92,13 @@
 								<a id="fotoSemillerista"><i class="fa-solid fa-eye"></i>Ver foto Actual</a>
 							</div>
                             <div class="wrap-input100">
-                                <label for="foto" class="input100">
+                                <label for="actFoto" class="input100">
                                     <i class="fa fa-cloud-upload"></i> 
                                     <div class="input-text">
                                         Cargar foto
                                     </div>
                                 </label>
-                                <input id="foto" type="file" name="filePic" placeholder="Foto" accept="image/*" style="display:none;" onchange="fileUploaded(this)">
+                                <input id="actFoto" type="file" name="filePic" placeholder="Foto" accept="image/*" style="display:none;" onchange="fileUploaded(this)">
                                 <span class="focus-input100"></span>
                             </div>
 
@@ -106,13 +106,13 @@
 								<a id="repSemillerista"><i class="fa-solid fa-eye"></i>Ver foto Actual</a>
 							</div>
                             <div class="wrap-input100">
-                                <label for="repmat" class="input100">
+                                <label for="actRepMat" class="input100">
                                     <i class="fa fa-cloud-upload"></i> 
                                     <div class="input-text">
                                         Cargar reporte de matrícula
                                     </div>
                                 </label>
-                                <input id="repmat" type="file" name="fileRep" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
+                                <input id="actRepMat" type="file" name="fileRep" placeholder="Foto" style="display:none;" onchange="fileUploaded(this)">
                                 <span class="focus-input100"></span>
                             </div>
                             
@@ -125,15 +125,15 @@
                             <div class="wrap-input100-radio">
                                 <label class="form-check-label">Estado</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst1" value="A" checked>
+                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst1" value="Activo" checked>
                                     <label class="form-check-label" for="rdSex1">
-                                        <div class="form-radio-text">A</div>
+                                        <div class="form-radio-text">Activo</div>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst2" value="I">
+                                    <input class="form-check-input" type="radio" name="rdEst" id="rdEst2" value="Inactivo">
                                     <label class="form-check-label" for="rdSex2">
-                                        <div class="form-radio-text">I</div>
+                                        <div class="form-radio-text">Inactivo</div>
                                     </label>
                                 </div>
                             </div>

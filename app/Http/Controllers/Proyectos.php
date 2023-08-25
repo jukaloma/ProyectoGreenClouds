@@ -60,4 +60,10 @@ class Proyectos extends Controller
         return redirect()->route('gest_semillero', $proyecto->semillero)->with(['success' => 'Proyecto actualizado exitosamente'])->withInput();
     }
 
+    public function eliminar($id){
+        $proyecto = Proyecto::findOrFail($id);
+        $sem = $proyecto->semillero;
+        $proyecto->delete();
+        return redirect()->route('gest_semillero', $sem)->with(['success' => 'Proyecto eliminado exitosamente'])->withInput();
+    }
 }
