@@ -229,10 +229,13 @@
 										@else
 											<td class="align-middle">n/a</td>
 										@endif
-										<td class="align-middle">
+										<td class="align-middle opt-column">
 											<div class="opt-table pr-3">
 												<a href="#" class="op-link" id="act_proy">
 													<i class="fa-solid fa-pen-to-square" data-target="modal_act_proyecto" onclick="openModal('modal_act_proyecto')" data-parametro="{{ json_encode($proyecto) }}"></i>
+												</a>
+												<a href="{{ route('pdf_proyecto', $proyecto->codProy) }}" class="op-link">
+													<i class="fa-regular fa-file-pdf"></i>
 												</a>
 												<a href="{{ route('del_proyecto', $proyecto->codProy) }}" class="op-link">
 													<i class="fa-solid fa-trash-can"></i>
@@ -280,7 +283,7 @@
 							@else
 								@foreach($eventos as $evento)
 									<tr>
-										<th scope="row" class="limited-column align-middle">{{ $evento->nomEvento }}</td>
+										<th scope="row" class="align-middle">{{ $evento->nomEvento }}</td>
 										<td class="align-middle">{{ $evento->descEvento }}</td>
 										<td class="align-middle">{{ $evento->fecIniEvento }}</td>
 										<td class="align-middle">{{ $evento->fecFinEvento }}</td>
@@ -289,10 +292,13 @@
 										<td class="align-middle">{{ $evento->modEvento }}</td>
 										<td class="align-middle">{{ $evento->clasEvento }}</td>
 										<td class="align-middle">{{ $evento->obsEvento }}</td>
-										<td class="align-middle">
+										<td class="align-middle opt-column">
 											<div class="opt-table pr-3">
 												<a href="#" class="op-link" id="act_evento">
 													<i class="fa-solid fa-pen-to-square" data-target="modal_act_evento" onclick="openModal('modal_act_evento')" data-parametro="{{ json_encode($evento) }}" semillero="{{ $id }}"></i>
+												</a>
+												<a href="{{ route('pdf_evento', [$evento->codEvento, $semillero->codSemillero]) }}" class="op-link">
+													<i class="fa-regular fa-file-pdf"></i>
 												</a>
 												<a href="{{ route('del_evento', [$evento->codEvento, $semillero->codSemillero]) }}" class="op-link">
 													<i class="fa-solid fa-trash-can"></i>
@@ -373,10 +379,13 @@
 											<td class="align-middle">n/a</td>
 										@endif
 										<td class="align-middle">{{ $semillerista->estSemillerista }}</td>
-										<td class="align-middle">
+										<td class="align-middle opt-column">
 											<div class="opt-table pr-3">
 												<a href="#" class="op-link" id="act_semillerista">
 													<i class="fa-solid fa-pen-to-square"data-target="modal_act_semillerista" onclick="openModal('modal_act_semillerista')" data-parametro="{{ json_encode($semillerista) }}"></i>
+												</a>
+												<a href="{{ route('pdf_semillerista', $semillerista->codSemillerista) }}" class="op-link">
+													<i class="fa-regular fa-file-pdf"></i>
 												</a>
 												<a href="{{ route('del_semillerista', $semillerista->codSemillerista) }}" class="op-link">
 													<i class="fa-solid fa-trash-can"></i>

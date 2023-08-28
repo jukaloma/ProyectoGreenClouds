@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Proyecto;
+use App\Models\Semillerista;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
 
 class Proyectos extends Controller
 {
@@ -62,8 +65,22 @@ class Proyectos extends Controller
 
     public function eliminar($id){
         $proyecto = Proyecto::findOrFail($id);
+        Semillerista::where('proyecto', $proyecto->codProy)->update(['proyecto' => null]);
         $sem = $proyecto->semillero;
         $proyecto->delete();
         return redirect()->route('gest_semillero', $sem)->with(['success' => 'Proyecto eliminado exitosamente'])->withInput();
+    }
+
+    public function pdf($id){
+        $proyecto = Proyecto::findOrFail($id);
+        
+        $view = View::make('pdf.proyecto', ['proyecto' => $proyecto]);
+        $html = $view->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+
+        return $dompdf->stream('Reporte '.$proyecto->titProy.'.pdf');
     }
 }

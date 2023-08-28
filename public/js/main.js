@@ -282,6 +282,7 @@ if (passwordField && confirmPasswordField) {
 document.querySelectorAll('#act_semillero i').forEach(function(icon) {
     icon.addEventListener('click', function() {
         var parametro = JSON.parse(this.getAttribute('data-parametro'));
+        var coord = this.getAttribute('coord');
         document.querySelector('#modal_act_semillero form#signup_form').action = window.location.origin + '/act_semillero/'+ parametro.codSemillero;
         document.querySelector('#modal_act_semillero input#nombre').value = parametro.nomSemillero;
         document.querySelector('#modal_act_semillero input#nombreHidden').value = parametro.nomSemillero;
@@ -292,8 +293,9 @@ document.querySelectorAll('#act_semillero i').forEach(function(icon) {
         document.querySelector('#modal_act_semillero #vision').value = parametro.visSemillero;
         document.querySelector('#modal_act_semillero #valores').value = parametro.valSemillero;
         document.querySelector('#modal_act_semillero #objetivos').value = parametro.objSemillero;
-        document.querySelector('#modal_act_semillero input#linea_investigacion').value = parametro.lineaSemillero;
+        document.querySelector('#modal_act_semillero #selLinea').value = parametro.lineaSemillero;
         document.querySelector('#modal_act_semillero input#fecha').value = parametro.fecCreaSemillero;
+        document.querySelector('#modal_act_semillero #selCoord').value = coord;
         openModal('modal_act_semillero');
     });
 });

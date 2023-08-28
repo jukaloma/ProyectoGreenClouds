@@ -44,17 +44,24 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="linea_investigacion" class="form-label">Línea de Investigación:</label>
-						<input type="text" class="form-control" id="linea_investigacion" name="linea_investigacion" required>
+						<label for="selLinea" class="form-label">Línea de Investigación:</label>
+						<select class="js-example-basic-single js-states form-control" id="selLinea" name="selLinea">
+							<option selected>Seleccionar Línea</option>
+							<option value="1">Ingeniería en Computación</option>
+							<option value="2">Ciencia en Computación</option>
+							<option value="3">Sistemas de Información</option>
+							<option value="4">Tecnología de Información</option>
+							<option value="5">Ingeniería de Software</option>
+						</select>
 					</div>
 
 					<div class="mb-3">
 						<label for="selCoord" class="form-label">Asignar coordinador</label>
-							<select class="js-example-basic-single js-states form-control" id="selCoord">
+							<select class="js-example-basic-single js-states form-control" id="selCoord" name="selCoord">
 								<option selected>Seleccionar</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+                                @foreach ($coordinadores as $coordinador)
+                                    <option value="{{ $coordinador->idCoord }}">{{ $coordinador->nomCoord }}</option>
+                                @endforeach
 							</select>
 					</div>
 				</div>

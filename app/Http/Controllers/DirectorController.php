@@ -37,6 +37,7 @@ class DirectorController extends Controller
 
     public function mainDir(){
         $semilleros = DB::table('semilleros')->get();
-        return view('main', ['semilleros' => $semilleros]);
+        $coordinadores = DB::table('coordinadores')->get();
+        return view('main', ['semilleros' => $semilleros], ['coordinadores' => $coordinadores]);
     }
 }

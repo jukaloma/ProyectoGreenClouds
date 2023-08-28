@@ -13,6 +13,11 @@
 		</a>
 	</div>
 	<div class="user-menu">
-		<a href=""><i class="fa-solid fa-circle-user"></i></a>
+		<a href="" id="dropdownMenuButton" data-toggle="dropdown"><i class="fa-solid fa-circle-user"></i></a>
+		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+			<a class="dropdown-item text-secondary text-sm" href="">Editar Cuenta</a>
+			<a class="dropdown-item text-secondary text-sm" href="">Crear Coordinador</a>
+			<a class="dropdown-item text-secondary text-sm" href="/">Cerrar Sesión</a>
+		</div>
 	</div>
 </div>

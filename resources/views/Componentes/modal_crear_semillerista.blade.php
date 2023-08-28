@@ -110,7 +110,7 @@
                             <select class="input100" aria-label="Programa" name="selProg">
                                 <option value="" selected disabled>Elija su programa</option>
                                 <option value="Sistemas">Ing Sistemas</option>
-                                <option value="Electrónica">Ing Electrónica</option>
+                                <option value="Electronica">Ing Electrónica</option>
                                 <option value="Civil">Ing Civil</option>
                             </select>
                             <span class="focus-input100"></span>

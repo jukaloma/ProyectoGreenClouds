@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('fecFinEvento');
             $table->string('lugarEvento');
             $table->string('tipoEvento');
-            $table->char('modEvento');
+            $table->string('modEvento');
             $table->string('clasEvento');
             $table->text('obsEvento');
             $table->timestamps();

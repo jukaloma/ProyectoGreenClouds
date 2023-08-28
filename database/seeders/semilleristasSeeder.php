@@ -29,7 +29,7 @@ class semilleristasSeeder extends Seeder
                     'repMatricula' => 'n/a',
                     'progSemillerista' => 'Sistemas',
                     'fecVincSemillerista' => '2020-08-12',
-                    'estSemillerista' => 'A',
+                    'estSemillerista' => 'Activo',
                     'semillero' => '1',
                 ],
                 [
@@ -45,7 +45,7 @@ class semilleristasSeeder extends Seeder
                     'repMatricula' => 'n/a',
                     'progSemillerista' => 'Civil',
                     'fecVincSemillerista' => '2022-02-18',
-                    'estSemillerista' => 'A',
+                    'estSemillerista' => 'Activo',
                     'semillero' => '1',
                 ],
                 [
@@ -61,7 +61,7 @@ class semilleristasSeeder extends Seeder
                     'repMatricula' => 'n/a',
                     'progSemillerista' => 'Electronica',
                     'fecVincSemillerista' => '2021-04-21',
-                    'estSemillerista' => 'A',
+                    'estSemillerista' => 'Activo',
                     'semillero' => '2',
                 ],
 

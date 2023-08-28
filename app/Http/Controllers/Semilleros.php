@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Semillero;
+use App\Models\Coordinador;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
 
 class Semilleros extends Controller
 {
     public function registrar(Request $r){
+        $coordinador = Coordinador::findOrFail($r->input('selCoord'));
         $logo = $r->file('logo');
         $logoPath = $logo->store('Semilleros/logos','public') ;
         $pres = $r->file('presentacion');
@@ -30,11 +34,22 @@ class Semilleros extends Controller
         $semillero->valSemillero = $r->input('valores');
         $semillero->objSemillero = $r->input('objetivos');
         $semillero->save();
+        if ($coordinador) {
+            $coordinador->semillero = $semillero->codSemillero;
+        }
         return redirect()->to('/principal')->with(['success' => 'Semillero creado exitosamente'])->withInput();
     }
     
     public function actualizar(Request $r, $id){
         $semillero = Semillero::findOrFail($id);
+        $coordinador = Coordinador::findOrFail($r->input('selCoord'));
+        
+        $delCoord = Coordinador::where('semillero', $semillero->codSemillero)->first();
+        if ($delCoord) {
+            $delCoord->semillero = null;
+            $delCoord->save();
+        }
+
         if ($r->hasFile('logo')) {
             if (Storage::exists($semillero->logoSemillero)) {
                 Storage::delete($semillero->logoSemillero);
@@ -65,13 +80,17 @@ class Semilleros extends Controller
         $semillero->fecCreaSemillero = $r->input('fecha');
         $semillero->presSemillero = $presPath;
         $semillero->resCreaSemillero = $resPath;
-        $semillero->lineaSemillero = $r->input('linea_investigacion');
+        $semillero->lineaSemillero = $r->input('selLinea');
         $semillero->descSemillero = $r->input('descripcion');
         $semillero->misSemillero = $r->input('mision');
         $semillero->visSemillero = $r->input('vision');
         $semillero->valSemillero = $r->input('valores');
         $semillero->objSemillero = $r->input('objetivos');
         $semillero->save();
+        if ($coordinador) {
+            $coordinador->semillero = $semillero->codSemillero;
+            $coordinador->save();
+        }
         return redirect()->to('/principal')->with(['success' => 'Semillero actualizado exitosamente'])->withInput();
     }
 
@@ -83,7 +102,21 @@ class Semilleros extends Controller
 
     public function eliminar($id){
         $semillero = Semillero::findOrFail($id);
+        // Semillerista::where('semillero', $semillero->codSemillero)->delete();
         $semillero->delete();
         return redirect()->route('main_dir');
+    }
+
+    public function pdf($id){
+        $semillero = Semillero::findOrFail($id);
+        
+        $view = View::make('pdf.semillero', ['semillero' => $semillero]);
+        $html = $view->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+
+        return $dompdf->stream('Reporte '.$semillero->nomSemillero.'.pdf');
     }
 }

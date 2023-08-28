@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Evento;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
 
 class Eventos extends Controller
 {    
@@ -43,5 +45,18 @@ class Eventos extends Controller
         $evento = Evento::findOrFail($id);
         $evento->delete();
         return redirect()->route('gest_semillero', $sem)->with(['success' => 'Evento eliminado exitosamente'])->withInput();
+    }
+
+    public function pdf($id, $sem){
+        $evento = Evento::findOrFail($id);
+        
+        $view = View::make('pdf.evento', ['evento' => $evento]);
+        $html = $view->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+
+        return $dompdf->stream('Reporte '.$evento->nomEvento.'.pdf');
     }
 }

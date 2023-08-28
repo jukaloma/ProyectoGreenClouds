@@ -9,7 +9,7 @@
 	<div id="modal_crear_semillero" class="modal" onclick="closeModal('modal_crear_semillero')">
 		<div class="modal-content" onclick="event.stopPropagation();">
 			<div class="form-close-container">
-				<button class="close-modal" onclick="closeModal('modal_crear_semillero')"><i class="fa-solid fa-xmark"></i></button>
+				<button class="modal-aux-button close-modal" onclick="closeModal('modal_crear_semillero')"><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<div class="form-title">
 				<h4>Ingrese los datos del semillero</h4>
@@ -53,21 +53,21 @@
 							<label for="selLinea" class="form-label">Línea de Investigación:</label>
 							<select class="js-example-basic-single js-states form-control" id="selLinea" name="selLinea">
 								<option selected>Seleccionar Línea</option>
-								<option value="Ingeniería en Computación">Ingeniería en Computación</option>
-								<option value="Ciencia en Computación">Ciencia en Computación</option>
-								<option value="Sistemas de Información">Sistemas de Información</option>
-								<option value="Tecnología de Información">Tecnología de Información</option>
-								<option value="Ingeniería de Software">Ingeniería de Software</option>
+								<option value="1">Ingeniería en Computación</option>
+								<option value="2">Ciencia en Computación</option>
+								<option value="3">Sistemas de Información</option>
+								<option value="4">Tecnología de Información</option>
+								<option value="5">Ingeniería de Software</option>
 							</select>
 						</div>
 
 						<div class="mb-3">
 							<label for="selCoord" class="form-label">Asignar coordinador</label>
-							<select class="js-example-basic-single js-states form-control" id="selCoord">
+							<select class="js-example-basic-single js-states form-control" id="selCoord" name="selCoord">
 								<option selected>Seleccionar</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+                                @foreach ($coordinadores as $coordinador)
+                                    <option value="{{ $coordinador->idCoord }}">{{ $coordinador->nomCoord }}</option>
+                                @endforeach
 							</select>
 						</div>
 					</div>
@@ -120,24 +120,41 @@
 
 							<div class="dir options justify-content-center">
 								@foreach($semilleros as $semillero)
+								@php
+								$coordinador = DB::table('coordinadores')->where('semillero', $semillero->codSemillero)->first();
+								$coord = "";
+								@endphp
+								@if($coordinador)
+									@php
+									$coord = $coordinador->idCoord;
+									@endphp
+								@endif
 								<div class="card card-item mx-2 mb-3">
-										<a href="{{ route('gest_semillero', $semillero->codSemillero) }}" class="img-container">
-											<img src="{{ asset('storage/' . $semillero->logoSemillero) }}" class="card-img-top" alt="logo {{ $semillero->nomSemillero}}">
-											<div class="overlay">
-												<span>Gestionar</span>
-											</div>
+									<a href="{{ route('gest_semillero', $semillero->codSemillero) }}" class="img-container">
+										<img src="{{ asset('storage/' . $semillero->logoSemillero) }}" class="card-img-top" alt="logo {{ $semillero->nomSemillero}}">
+										<div class="overlay">
+											<span>Gestionar</span>
+										</div>
+									</a>
+									<div class="elipsis">
+										<a href=""  id="dropdownMenuButton" data-toggle="dropdown">
+											<i class="fa-solid fa-ellipsis"></i>
 										</a>
-										<hr>
-										<div class="card-body">
-											<div class="op-semilleros">
-												<a href="#" class="op-link mx-4" id="act_semillero">
-													<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ json_encode($semillero) }}"></i>
-												</a>
-												<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
-											</div>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<a class="dropdown-item text-secondary" href="{{ route('pdf_semillero', $semillero->codSemillero) }}">Generar Reporte</a>
 										</div>
 									</div>
-									@endforeach
+									<hr>
+									<div class="card-body">
+										<div class="op-semilleros">
+											<a href="#" class="op-link mx-4" id="act_semillero">
+												<i class="fa-solid fa-pen-to-square" data-target="modal_act_semillero" onclick="openModal('modal_act_semillero')" data-parametro="{{ json_encode($semillero) }}" coord="{{ $coord }}"></i>
+											</a>
+											<a href="{{ route('del_semillero', $semillero->codSemillero) }}" class="op-link mx-4"><i class="fa-solid fa-trash-can"></i></a>
+										</div>
+									</div>
+								</div>
+								@endforeach
 								<a href="#" class="card card-item mx-2 mb-3 icon-only" style="width: 202px;" data-target="modal_crear_semillero" onclick="openModal('modal_crear_semillero')">
 									<div class="img-container">
 										<i class="fa-solid fa-square-plus fa-2xl card-img-top"></i>

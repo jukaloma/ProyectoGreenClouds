@@ -64,7 +64,7 @@ class semillerosSeeder extends Seeder
                 la comunidad buscando el aprovechamiento de las nuevas tecnologías. 
                 3. Fomentar el trabajo en equipo y la participación de los integrantes para el desarrollo de diversos 
                 proyectos bajo las líneas de investigación establecidas.',
-                'lineaSemillero' => 'Ingeniería en Computación, Ciencia en Computación, Sistemas de Información, Tecnología de Información, Ingeniería de Software',
+                'lineaSemillero' => '2',
                 'presSemillero' => 'Semilleros\presentaciones\SEMILLERO IPIALES-2020.pdf',
                 'fecCreaSemillero' => '2019-12-13',
                 'resCreaSemillero' => 'Semilleros\resoluciones\Acuerdo Semillero Green Clouds.pdf',
@@ -78,7 +78,7 @@ class semillerosSeeder extends Seeder
                 'visSemillero' => 'n/a',
                 'valSemillero' => 'n/a',
                 'objSemillero' => 'n/a',
-                'lineaSemillero' => 'n/a',
+                'lineaSemillero' => '1',
                 'presSemillero' => 'n/a',
                 'fecCreaSemillero' => '2019-12-13',
                 'resCreaSemillero' => 'n/a',
@@ -100,7 +100,7 @@ class semillerosSeeder extends Seeder
                 3.	Fomentar el trabajo interdisciplinario institucional, regional, nacional e internacional para el desarrollo proyectos de investigación, de emprendimiento empresarial, de innovación y desarrollo tecnológico.
                 4.	Fomentar el desarrollo de proyectos la investigación, de emprendimiento empresarial, de innovación y desarrollo tecnológico como un trabajo extracurricular.
                 ',
-                'lineaSemillero' => 'Ingeniería en Computación, Ciencia en Computación, Sistemas de Información, Tecnología de Información, Ingeniería de Software',
+                'lineaSemillero' => '3',
                 'presSemillero' => 'Semilleros\presentaciones\Plantilla WM.pptx',
                 'fecCreaSemillero' => '2019-10-20',
                 'resCreaSemillero' => 'Semilleros\resoluciones\Acuerdo104Willamuru001.pdf',

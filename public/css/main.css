@@ -161,6 +161,10 @@ iframe {
   right: 0;
 }
 
+.text-sm{
+  font-size: 20px !important;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ Scrollbar ]*/
 
@@ -476,6 +480,26 @@ iframe {
   transition: opacity 0.3s ease-in-out;
 }
 
+.elipsis{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  opacity: 0;
+  border-radius: 5px;
+  background-color: #666666a4;
+  color: #ffffff;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.elipsis:hover a,.elipsis:hover{
+  opacity: 1;
+  cursor: pointer;
+  color: #ffffff;
+}
+
 .card-item .icon-only {
   background-color: #ffffff;
   color: #858585;
@@ -708,6 +732,11 @@ section.semilleros .modal-content .container{
 .l-navbar .log-out{
   font-size: 25px;
   transform: scaleX(-1);
+  color: #0d6d00;
+}
+
+.l-navbar .log-out:hover{
+  color: #ff0000;
 }
 
 /*-------------------------------------------------
@@ -777,12 +806,12 @@ section.semilleros .modal-content .container{
 
 .carousel-proy{
   display: flex;
-  align-items: center;
   justify-content: center;
   font-family: 'Poppins-Medium';
   color: #666666;
   height: 10vh;
   overflow: auto;
+  padding: 10px;
 }
 
 .owl-item{
@@ -811,8 +840,8 @@ table{
   color: #666666c9;
 }
 
-.limited-column{
-  width: 500px;
+.opt-column{
+  width: 120px;
   overflow: auto;
 }
 

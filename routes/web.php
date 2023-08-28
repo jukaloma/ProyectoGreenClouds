@@ -1,12 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Semilleristas;
 use App\Http\Controllers\Coordinadores;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\Semilleros;
 use App\Http\Controllers\Proyectos;
 use App\Http\Controllers\Eventos;
+use Dompdf\Dompdf;
+use App\Models\Semillero;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +42,13 @@ Route::post('coord_signup', [Coordinadores::class, 'authPass'])->name('coord_sig
 Route::post('reg_semillerista', [Semilleristas::class, 'registrar'])->name('reg_semillerista');
 Route::post('act_semillerista/{id}', [Semilleristas::class, 'actualizar'])->name('act_semillerista');
 Route::get('del_semillerista/{id}', [Semilleristas::class, 'eliminar'])->name('del_semillerista');
+Route::get('pdf_semillerista/{id}', [Semilleristas::class, 'pdf'])->name('pdf_semillerista');
 
 Route::post('reg_semillero', [Semilleros::class, 'registrar'])->name('reg_semillero');
 Route::post('act_semillero/{id}', [Semilleros::class, 'actualizar'])->name('act_semillero');
 Route::get('del_semillero/{id}', [Semilleros::class, 'eliminar'])->name('del_semillero');
 Route::get('gest_semillero/{id}', [Semilleros::class, 'gestionar'])->name('gest_semillero');
+Route::get('pdf_semillero/{id}', [Semilleros::class, 'pdf'])->name('pdf_semillero');
 
 Route::post('reg_coordinador', [Coordinadores::class, 'registrar'])->name('reg_coordinador');
 
@@ -52,10 +58,9 @@ Route::post('reg_director', [DirectorController::class, 'registrar'])->name('reg
 Route::post('reg_proyecto/{id}', [Proyectos::class, 'registrar'])->name('reg_proyecto');
 Route::post('act_proyecto/{id}', [Proyectos::class, 'actualizar'])->name('act_proyecto');
 Route::get('del_proyecto/{id}', [Proyectos::class, 'eliminar'])->name('del_proyecto');
+Route::get('pdf_proyecto/{id}', [Proyectos::class, 'pdf'])->name('pdf_proyecto');
 
 Route::post('reg_evento/{id}', [Eventos::class, 'registrar'])->name('reg_evento');
 Route::post('act_evento/{id}/{sem}', [Eventos::class, 'actualizar'])->name('act_evento');
 Route::get('del_evento/{id}/{sem}', [Eventos::class, 'eliminar'])->name('del_evento');
-
-
-
+Route::get('pdf_evento/{id}/{sem}', [Eventos::class, 'pdf'])->name('pdf_evento');

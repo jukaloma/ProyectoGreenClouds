@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Semillerista;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Dompdf\Dompdf;
 
 class Semilleristas extends Controller
 {
@@ -78,5 +81,18 @@ class Semilleristas extends Controller
         $sem = $semillerista->semillero;
         $semillerista->delete();
         return redirect()->route('gest_semillero', $sem)->with(['success' => 'Semillerista eliminado exitosamente'])->withInput();
+    }
+
+    public function pdf($id){
+        $semillerista = Semillerista::findOrFail($id);
+        
+        $view = View::make('pdf.semillerista', ['semillerista' => $semillerista]);
+        $html = $view->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+
+        return $dompdf->stream('Reporte '.$semillerista->nomSemillerista.'.pdf');
     }
 }
