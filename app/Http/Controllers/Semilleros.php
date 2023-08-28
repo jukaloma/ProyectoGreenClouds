@@ -36,13 +36,16 @@ class Semilleros extends Controller
         $semillero->save();
         if ($coordinador) {
             $coordinador->semillero = $semillero->codSemillero;
+            $coordinador->save();
         }
         return redirect()->to('/principal')->with(['success' => 'Semillero creado exitosamente'])->withInput();
     }
     
     public function actualizar(Request $r, $id){
         $semillero = Semillero::findOrFail($id);
-        $coordinador = Coordinador::findOrFail($r->input('selCoord'));
+        if ($r->input('selCoord')) {
+            $coordinador = Coordinador::findOrFail($r->input('selCoord'));
+        }
         
         $delCoord = Coordinador::where('semillero', $semillero->codSemillero)->first();
         if ($delCoord) {

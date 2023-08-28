@@ -52,7 +52,7 @@
 						<div class="mb-3">
 							<label for="selLinea" class="form-label">Línea de Investigación:</label>
 							<select class="js-example-basic-single js-states form-control" id="selLinea" name="selLinea">
-								<option selected>Seleccionar Línea</option>
+								<option selected disabled>Seleccionar Línea</option>
 								<option value="1">Ingeniería en Computación</option>
 								<option value="2">Ciencia en Computación</option>
 								<option value="3">Sistemas de Información</option>
@@ -64,7 +64,7 @@
 						<div class="mb-3">
 							<label for="selCoord" class="form-label">Asignar coordinador</label>
 							<select class="js-example-basic-single js-states form-control" id="selCoord" name="selCoord">
-								<option selected>Seleccionar</option>
+								<option selected disabled>Seleccionar</option>
                                 @foreach ($coordinadores as $coordinador)
                                     <option value="{{ $coordinador->idCoord }}">{{ $coordinador->nomCoord }}</option>
                                 @endforeach
